@@ -5,7 +5,8 @@
         <li   v-for='data in looplist' >
             <div class="top">
                 <dl>
-                    <dt><img  :src="data.headPhotoUrl_120_150"></dt>
+                    <dt>
+                        <img  :src="data.headPhotoUrl_120_150"></dt>
                     <dd>
                         <h3>{{data.nickname}}</h3>
                         <p class="textA">
@@ -51,6 +52,7 @@ import axios from 'axios'
          }).then(res=>{
             console.log(res.data);
             this.looplist= res.data.data;
+            console.log(res.data.data)
         })
       }
   }
