@@ -1,9 +1,10 @@
 <template>
     <div class="myinfo-header-container" :style="styleObj">
       <!-- <van-nav-bar title="标题" left-text="返回" id="myinfo-header" left-arrow> -->
-      <van-nav-bar title="标题" id="myinfo-header">
-        <van-icon name="setting-o" slot="right" :click-right="handelClickRight()"/>
+      <van-nav-bar title="标题" id="myinfo-header" @click-right="onClickRight">
+        <van-icon name="setting-o" slot="right" />
       </van-nav-bar>
+      <router-view></router-view>
     </div>
 </template>
 
@@ -33,8 +34,10 @@
   import Vue from "vue"
   import { NavBar } from 'vant';
   import { Icon } from 'vant';
+  import { Toast } from 'vant';
   Vue.use(Icon);
   Vue.use(NavBar);
+  Vue.use(Toast);
 
   export default {
     methods: {
@@ -50,11 +53,6 @@
         styleObj:{
           "color":"#FFF"
         }
-      }
-    },
-    methods:{
-      handelClickRight(){
-        console.log("1qefngrq")
       }
     }
   }
