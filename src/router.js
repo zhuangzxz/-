@@ -11,13 +11,13 @@ import MyInfoView  from './views/MyInfo.vue'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
+  mode: 'hash',
+  //base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
       name: 'home',
-      redirect:'/meet'
+      component: Home
     },
     {
       path: '/meet',
