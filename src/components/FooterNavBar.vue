@@ -33,6 +33,10 @@
 <style type="text/css" lang="scss">
   .footerbar-nav{
     height:49px!important;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
     .footerbar-tab{
       .active{
         .title{
