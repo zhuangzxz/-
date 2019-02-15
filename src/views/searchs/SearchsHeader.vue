@@ -34,7 +34,7 @@ Vue.use(Popup);
             ageB:25,
             statureA:145,
             statureB:200,
-            isShow:true,
+            isShow:false,
             show:false,
             statureShow:false,
             current: null,
