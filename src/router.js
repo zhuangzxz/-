@@ -7,6 +7,7 @@ import SearchView  from './views/Search.vue'
 import MessageView  from './views/Message.vue'
 import VipView  from './views/Vip.vue'
 import MyInfoView  from './views/MyInfo.vue'
+import MainPannel  from './views/myinfo/mainpanel.vue'
 
 Vue.use(Router)
 
@@ -17,7 +18,7 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      redirect: '/meet'
     },
     {
       path: '/meet',
@@ -42,7 +43,19 @@ export default new Router({
     {
       path: '/myinfo',
       name: 'myinfo',
-      component: MyInfoView
+      component: MyInfoView,
+      children:[
+        {
+          path: '',
+          name: 'mainpannel',
+          redirect: '/myinfo/main'
+        },
+        {
+          path: 'main',
+          name: 'mainpannel',
+          component: MainPannel
+        }
+      ]
     },
     {
       path: '/about',
