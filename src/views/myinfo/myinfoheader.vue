@@ -1,10 +1,9 @@
 <template>
     <div class="myinfo-header-container" :style="styleObj">
       <!-- <van-nav-bar title="标题" left-text="返回" id="myinfo-header" left-arrow> -->
-      <van-nav-bar title="标题" id="myinfo-header" @click-right="onClickRight">
+      <van-nav-bar title="我的" id="myinfo-header" @click-right="onClickRight">
         <van-icon name="setting-o" slot="right" />
       </van-nav-bar>
-      <router-view></router-view>
     </div>
 </template>
 
