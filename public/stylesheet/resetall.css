@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*=============样式重置===========*/
+/*清样式 清间距*/
+body,h1,h2,h3,h4,h5,h6,h7,p,a,img,input,ul,li,ol,dl,dt,dd,figure,figcaption{ padding:0; margin:0}/*清各种间距*/
+ul,ol{ list-style:none}/*去掉list默认样式*/
+input{ outline:none}/*去掉文本框外边框*/
+img{display:block; border:0}
+/*定义全局样式（文本相关属性）*/
+body{ font-size:12px; color:#3e3e3e; font-family:"微软雅黑";} /*全局字号 颜色 字体*/
+header,footer,nav,main,article,aside,figure,figurecaption,section{ display:block; }
+html,body{ height:100% }
+/*==============手机端需要去掉注释===================*/
+*{box-sizing:border-box;}
+html{ font-size:13.33vw;}/*iPhone6为基础 分辨率750*1334  实际测量值除以100*/
+/*定义超链接样式*/
+a{ text-decoration:none; color:#909090; }/*去掉下划线，鼠标移上颜色*/
+a:hover{ text-decoration:none; color:#f60; }/*加上下划线，鼠标移上颜色*/
+
+/*=============公共样式=====手机端需要注释掉======*/
+/*.w{width:1190px; margin:0 auto} 版心*/
+/*.l{ float:left; }左浮动*/
+/*.r{ float:right; }右浮动*/
