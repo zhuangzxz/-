@@ -1,14 +1,20 @@
 <template>
   <div class="search">
-    <h2>搜索</h2>
+    <headers></headers>
   </div>
 </template>
 
-<style type="text/css"></style>
 
 <script type="text/javascript">
+import headers from './searchs/SearchsHeader'
   export default {
-
+        components:{
+            headers  
+        }
   }
 </script>
+<style scoped lang="scss">
+
+</style>
+
 
