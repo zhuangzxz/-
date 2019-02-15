@@ -133,9 +133,9 @@ import axios from 'axios';
         axios({
             url:"data/f/getmembership",
             params:{
-                limit:200
+                page:Math.floor(Math.random()*100),
+                limit:100
             }
-          
          }).then(res=>{
             console.log(res.data);
             this.looplist= res.data.data;
