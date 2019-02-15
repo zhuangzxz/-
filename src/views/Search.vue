@@ -61,6 +61,7 @@ import axios from 'axios'
             width: 100%;
             height: 183px;
             border-top: 1px solid #e3e3e3;
+            margin-top:45px;
             .top{
                 width: 100%;
                 height: 138px;

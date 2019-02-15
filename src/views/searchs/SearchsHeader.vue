@@ -86,8 +86,12 @@ Vue.use(Popup);
         height:44px;
         background:red;
         color: #999;
-    border: 1px solid #e3e3e3;
-    background: #fff;
+        border: 1px solid #e3e3e3;
+        background: #fff;
+        position:fixed;
+        top:0;
+        left:0;
+        z-index:1;
     .one{
         height:44px;
         line-height:44px;
