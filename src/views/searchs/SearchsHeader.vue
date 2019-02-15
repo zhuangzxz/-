@@ -6,7 +6,7 @@
     <span class="four" @click="handclick()"></span>
     <div class="box" v-show="isShow">
         <span class="nl">年龄:<u @click="vanclick('ageA')">{{ageA}}</u>-<u @click="vanclick('ageB')">{{ageB}}</u>岁</span>
-         <span class="nl">身高:<u @click="vanclicks('statureA')">{{statureA}}</u>-<u @click="vanclicks('statureB')">{{statureB}}</u>岁</span>
+         <span class="nl">身高:<u @click="vanclicks('statureA')">{{statureA}}</u>-<u @click="vanclicks('statureB')">{{statureB}}</u>厘米</span>
         <button @click="btClick()">搜索</button>
         <van-popup v-model="show" position="bottom" :overlay="true">
            <van-picker show-toolbar title="标题" :columns="columns" @cancel="onCancel" @confirm="onConfirm" ref="zz"/> 
