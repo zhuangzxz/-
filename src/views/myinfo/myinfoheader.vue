@@ -13,6 +13,7 @@
     top: 0;
     height: 42px;
     width: 100%;
+    z-index: 2;
   }
   #myinfo-header{
     background-color: #FF6400;

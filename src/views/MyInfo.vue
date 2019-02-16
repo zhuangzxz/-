@@ -11,6 +11,7 @@
   #myinfo-main{
     position: absolute;
     top: 42px;
+    width:100%;
   }
 </style>
 
