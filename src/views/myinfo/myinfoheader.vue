@@ -1,9 +1,15 @@
 <template>
     <div class="myinfo-header-container" :style="styleObj">
-      <!-- <van-nav-bar title="标题" left-text="返回" id="myinfo-header" left-arrow> -->
-      <van-nav-bar title="我的" id="myinfo-header" @click-right="onClickRight">
-        <van-icon name="setting-o" slot="right" />
-      </van-nav-bar>
+      <div v-if="!$store.state.myInfo.isShowBack">
+        <van-nav-bar title="我的" id="myinfo-header" @click-right="onClickRight" >
+          <van-icon name="setting-o" slot="right" />
+        </van-nav-bar>
+      </div>
+      <div v-if="$store.state.myInfo.isShowBack">
+        <van-nav-bar title="我的" id="myinfo-header" @click-left="onClickLeft">
+          <van-icon name="arrow-left" slot="left" />
+        </van-nav-bar>
+      </div>
     </div>
 </template>
 
@@ -43,6 +49,7 @@
     methods: {
       onClickLeft() {
         Toast('返回');
+        this.$router.go(-1)
       },
       onClickRight() {
         Toast('按钮');
@@ -54,6 +61,9 @@
           "color":"#FFF"
         }
       }
+    },
+    mounted(){
+      console.log(this.$store.state.myInfo.isShowBack)
     }
   }
 </script>
