@@ -3,7 +3,7 @@
 		<div class="myIndex2">
 			<div class="userTCont">
 				<a href="javascript:;" class="pic">
-					<img src="//images.baihe.com/images/baihe_new/images/default_pictures/80_100/nopic_male.gif" id="headPhoto">
+					<img src="http://39.105.126.232:8010/image/houtinghua/微信截图_20190217073323.png" id="headPhoto">
 				</a>
 				<div class="txt">
 					<h5 class="">小君君</h5>
@@ -13,7 +13,7 @@
 					</div>
 					<p>资料完整度<span>21%</span></p>
 				</div>
-				<a href="javascript:;" class="arrow" id="myBHprofileSet">资料</a>
+				<a href="#/myinfo/profileset" class="arrow" id="myBHprofileSet">资料</a>
 			</div>
 			<div class="photoCont">
 				<ul id="myBHphotoList">

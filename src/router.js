@@ -6,8 +6,11 @@ import MeetView  from './views/Meet.vue'
 import SearchView  from './views/Search.vue'
 import MessageView  from './views/Message.vue'
 import VipView  from './views/Vip.vue'
+
 import MyInfoView  from './views/MyInfo.vue'
 import MainPannel  from './views/myinfo/mainpanel.vue'
+import profileSetPannel  from './views/myinfo/profileset'
+
 
 Vue.use(Router)
 
@@ -54,6 +57,11 @@ export default new Router({
           path: 'main',
           name: 'mainpannel',
           component: MainPannel
+        },
+        {
+          path: 'profileset',
+          name: 'profileset',
+          component: profileSetPannel
         }
       ]
     },
