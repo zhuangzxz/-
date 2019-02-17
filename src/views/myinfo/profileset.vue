@@ -25,54 +25,53 @@
           <li class="active">性别<span style="margin-right:30px;">男</span></li>
           <li id="sli1">出生日期<span style="margin-right:30px;">1989-01-15</span></li>
           <li>身高
-            <input type="text" id="vBasicInfoHeight_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="" @click='ifBasicInfoHeightPopupShow=true' v-model="myinfo.height">
-            <van-popup v-model="ifBasicInfoHeightPopupShow" position="bottom" :overlay="true" >
-              <van-picker :columns="heightList" show-toolbar @cancel="onCancel" @confirm="onConfirm"/>
+            <input type="text" id="vBasicInfoHeight_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="" @click='isPopupShow.basicInfoHeight=true' v-model="myinfo.height">
+            <van-popup v-model="isPopupShow.basicInfoHeight" position="bottom" :overlay="true" >
+              <van-picker :columns="heightList" show-toolbar @cancel="onCancel" @confirm="onConfirmHeight"/>
             </van-popup>
           </li>
           <li class="area">居住地
             <span>
-              <input type="text" id="vBasicInfoProvince_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="" @click='ifBasicInfoLocationPopupShow=true'>
-              <input type="text" id="vBasicInfoCity_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="" @click='ifBasicInfoLocationPopupShow=true'>
-              <van-popup v-model="ifBasicInfoLocationPopupShow" position="bottom" :overlay="true">
-                <van-picker :columns="citysList" @change="onChange" show-toolbar @cancel="onCancel" @confirm="onConfirm" />
+              <input type="text" id="vBasicInfoProvince_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="" @click='isPopupShow.basicInfoLocation=true' v-model="myinfo.cityChn">
+              <van-popup v-model="isPopupShow.basicInfoLocation" position="bottom" :overlay="true">
+                <van-picker :columns="citysList" @change="onChange" show-toolbar @cancel="onCancel" @confirm="onConfirmLocation" />
               </van-popup>
               
             </span>
           </li>
           <li>学历
-            <input type="text" id="vBasicInfoEducation_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="">
-            <select id="vBasicInfoEducation" data-role="none" class="js_edu dw-hsel" tabindex="-1">
-              <option value="1">初中</option><option value="2">中专/职高/技校</option><option value="3">高中</option><option value="4">大专</option><option value="5" selected="selected">本科</option><option value="6">硕士</option><option value="7">博士</option>
-            </select>
+            <input type="text" id="vBasicInfoEducation_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="" @click='isPopupShow.basicInfoEducation=true' v-model="myinfo.educationChn">
+            <van-popup v-model="isPopupShow.basicInfoEducation" position="bottom" :overlay="true">
+              <van-picker :columns="educationList" @change="onChange" show-toolbar @cancel="onCancel" @confirm="onConfirmEducation" />
+            </van-popup>
           </li>
           <li id="sli2">婚姻状况
-            <input type="text" id="vBasicInfoMarriage_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="">
-            <select id="vBasicInfoMarriage" data-role="none" class="js_marista dw-hsel" tabindex="-1">
-              <option value="1" selected="selected">未婚</option><option value="2">离异</option><option value="3">丧偶</option><option value="4">已婚</option>
-            </select>
+            <input type="text" id="vBasicInfoMarriage_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="" @click='isPopupShow.basicInfoMarriage=true' v-model="myinfo.marriage">
+            <van-popup v-model="isPopupShow.basicInfoMarriage" position="bottom" :overlay="true">
+              <van-picker :columns="marriageList" @change="onChange" show-toolbar @cancel="onCancel" @confirm="onConfirmMarriage" />
+            </van-popup>
           </li>
           <li>有无子女
-            <input type="text" id="vBasicInfoChildren_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="">
-            <select id="vBasicInfoChildren" data-role="none" class="js_children dw-hsel" tabindex="-1">
-              <option value="1">没有</option><option value="2">有，和我住一起</option><option value="3">有，有时和我住一起</option><option value="4">有，不和我住一起</option>
-            </select>
+            <input type="text" id="vBasicInfoChildren_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="" @click='isPopupShow.basicInfoChildren=true' v-model="myinfo.children">
+            <van-popup v-model="isPopupShow.basicInfoChildren" position="bottom" :overlay="true">
+              <van-picker :columns="childrenList" @change="onChange" show-toolbar @cancel="onCancel" @confirm="onConfirmChildren" />
+            </van-popup>
           </li>
-          <li>购房情况<input type="text" id="vBasicInfoHousing_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="">
-            <select id="vBasicInfoHousing" data-role="none" class="js_house dw-hsel" tabindex="-1">
-              <option value="1">以后再告诉你</option><option value="2">与父母同住</option><option value="3">租房</option><option value="4">已购房(有贷款)</option><option value="5">已购房(无贷款)</option><option value="6">住单位房</option><option value="7">住亲朋家</option><option value="8">需要时购置</option>
-            </select>
+          <li>购房情况<input type="text" id="vBasicInfoHousing_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="" @click='isPopupShow.basicInfoHousing=true' v-model="myinfo.housing">
+            <van-popup v-model="isPopupShow.basicInfoHousing" position="bottom" :overlay="true">
+              <van-picker :columns="housingList" @change="onChange" show-toolbar @cancel="onCancel" @confirm="onConfirmHousing" />
+            </van-popup>
           </li>
-          <li>购车情况<input type="text" id="vBasicInfoCar_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="">
-            <select id="vBasicInfoCar" data-role="none" class="js_car dw-hsel" tabindex="-1">
-              <option value="1">未购车</option><option value="2">已购车</option><option value="3">单位用车</option><option value="4">需要时购置</option>
-            </select>
+          <li>购车情况<input type="text" id="vBasicInfoCar_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="" @click='isPopupShow.basicInfoCar=true' v-model="myinfo.car">
+            <van-popup v-model="isPopupShow.basicInfoCar" position="bottom" :overlay="true">
+              <van-picker :columns="carList" @change="onChange" show-toolbar @cancel="onCancel" @confirm="onConfirmCar" />
+            </van-popup> 
           </li>
           <li>职业职务
-            <input type="text" id="vBasicInfoOccupation_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="">
-            <select id="vBasicInfoOccupation" data-role="none" class="js_job dw-hsel" tabindex="-1">
-              <option value="1">计算机/互联网</option><option value="2">电子电器/通信技术</option><option value="3">机械/仪器仪表</option><option value="4">销售</option><option value="5">客服及技术支持</option><option value="6">财务/审计/税务</option><option value="7">证券/金融/投资/银行</option><option value="8">保险</option><option value="9">生产/营运</option><option value="10">质量/安全管理</option><option value="11">工程/能源</option><option value="12">贸易/采购</option><option value="13">物流/仓储/运输</option><option value="14">技工</option><option value="15">化工/环保</option><option value="16">生物/制药/医疗器械</option><option value="17">医院/医疗/护理</option><option value="18">广告</option><option value="19">市场/公关</option><option value="20">影视/媒体</option><option value="21">写作/出版/印刷</option><option value="22">翻译</option><option value="23">艺术/设计/创意</option><option value="24">建筑/房地产/装饰装修</option><option value="25">物业管理</option><option value="26">人力资源</option><option value="27">高级经营管理</option><option value="28">行政/后勤</option><option value="29">咨询/顾问</option><option value="30">律师/法务/合规</option><option value="31">教育/培训</option><option value="32">科研</option><option value="33">酒店/旅游/餐饮/娱乐 </option><option value="34">美容/健身</option><option value="35">商业零售服务</option><option value="36">交通运输服务</option><option value="37">保安/家政服务</option><option value="38">警察/其它</option><option value="39">公务员</option><option value="40">运动员</option><option value="41">农/林/牧/渔</option><option value="42">自由职业/兼职</option><option value="43">储备干部/培训生/实习生</option><option value="44">在校学生</option><option value="45">退休</option><option value="46">其它</option>
-            </select>
+            <input type="text" id="vBasicInfoOccupation_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="" @click='isPopupShow.basicInfoOccupation=true' v-model="myinfo.occupation">
+            <van-popup v-model="isPopupShow.basicInfoOccupation" position="bottom" :overlay="true">
+              <van-picker :columns="occupationList" @change="onChange" show-toolbar @cancel="onCancel" @confirm="onConfirmOccupation" />
+            </van-popup>
           </li>
         </ul>
         <a id="vBasicInfoDoSaveBasic" href="javascript:" class="orgBtn">保存</a></div></div>
@@ -129,6 +128,9 @@
     color: #333;
     border-bottom: 1px solid #e6e6e6;
   }
+  .myData{
+    padding-bottom:50px; 
+  }
   .myData .inforList li:nth-child(1):before, .myData .inforList li:nth-child(3):before, .myData .inforList li:nth-child(4):before {
     background: none;
     content: "";
@@ -178,9 +180,6 @@
     clip: rect(1px,1px,1px,1px);
   }
   .inforList .area span {
-    margin-right: 12px;
-  }
-  .inforList .area span {
       display: inline-block;
       float: right;
   }
@@ -190,11 +189,11 @@
   }
   .inforList .area input {
     float: none;
-    width: 64px;
+    width: 150px;
     height: 43px;
-    margin-right: 10px;
-    padding-right: 22px;
-    background: #fff url(http://static5.baihe.com/images/newH5/icon_sel.gif) no-repeat right center;
+    margin-right: 30px;
+    /*padding-right: 22px;*/
+    /*background: #fff url(http://static5.baihe.com/images/newH5/icon_sel.gif) no-repeat right center;*/
   }
   .dw-hsel {
     position: absolute;
@@ -210,6 +209,25 @@
       color: #666;
       border: none;
       outline: none;
+  }
+  .myData .orgBtn, .zeouTj .orgBtn {
+    margin: 15px;
+  }
+  .orgBtn {
+    background: #ff6400;
+  }
+  .orgBtn, .orgBtn1, .orgBtn3 {
+    display: block;
+    height: 42px;
+    margin: 20px 15px 0;
+    font: 18px/42px microsoft yahei;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    overflow: hidden;
   }
 </style>
 
@@ -236,12 +254,47 @@
           this.isMyBaseInfoShow = false;
         }
       },
-      onConfirm(value, index) {
+      onConfirmHeight(value, index) {
         //Toast(`当前值：${value}, 当前索引：${index}`);
-        this.ifBasicInfoHeightPopupShow = false;
+        this.isPopupShow.basicInfoHeight = false;
         this.myinfo.height = value;
       },
-        onCancel() {
+      onConfirmLocation(value, index) {
+        //Toast(`当前值：${value}, 当前索引：${index}`);
+        this.isPopupShow.basicInfoLocation = false;
+        this.myinfo.cityChn = value;
+      },
+      onConfirmEducation(value, index) {
+        //Toast(`当前值：${value}, 当前索引：${index}`);
+        this.isPopupShow.basicInfoEducation = false;
+        this.myinfo.educationChn = value;
+      },
+      onConfirmMarriage(value, index) {
+        //Toast(`当前值：${value}, 当前索引：${index}`);
+        this.isPopupShow.basicInfoMarriage = false;
+        this.myinfo.marriage = value;
+      },
+      onConfirmChildren(value, index) {
+        //Toast(`当前值：${value}, 当前索引：${index}`);
+        this.isPopupShow.basicInfoChildren = false;
+        this.myinfo.children = value;
+      },
+      onConfirmHousing(value, index) {
+        //Toast(`当前值：${value}, 当前索引：${index}`);
+        this.isPopupShow.basicInfoHousing = false;
+        this.myinfo.housing = value;
+      },
+      onConfirmCar(value, index) {
+        //Toast(`当前值：${value}, 当前索引：${index}`);
+        this.isPopupShow.basicInfoCar = false;
+        this.myinfo.car = value;
+      },
+      onConfirmOccupation(value, index) {
+        //Toast(`当前值：${value}, 当前索引：${index}`);
+        this.isPopupShow.basicInfoOccupation = false;
+        this.myinfo.occupation = value;
+      },
+      onCancel() {
         Toast('取消');
       },
       onChange(picker, values) {
@@ -250,13 +303,32 @@
     },
     data(){
       return{
-        ifBasicInfoHeightPopupShow:false,
-        ifBasicInfoLocationPopupShow:false,
         isMainPanelShow:true,
         isMyBaseInfoShow:false,
         isMyBaseMatchShow:false,
+
+        isPopupShow:{
+          basicInfoHeight : false,
+          basicInfoLocation : false,
+          basicInfoEducation : false,
+          basicInfoMarriage: false,
+          basicInfoChildren: false,
+          basicInfoHousing: false,
+          basicInfoCar: false,
+          basicInfoOccupation: false
+        },
         myinfo:{
-          height:170
+          height:170,
+          cityChn:'',
+          provinceId:8611,
+          cityId:1,
+          educationChn:'',
+          education:'',
+          marriage:'',
+          children: '',
+          housing: '',
+          car:'',
+          occupation:''
         },
         heightList: ['165', '166', '167', '168', '169','170', '171', '172', '173', '174','175'],
         citysList:[
@@ -265,11 +337,17 @@
             className: 'column1'
           },
           {
-            values: citys['浙江'],
+            values: citys['北京'],
             className: 'column2',
-            defaultIndex: 2
+            defaultIndex: 0
           }
-        ]
+        ],
+        educationList:['初中','中专/职高/技校','高中','大专','本科','硕士','博士'],
+        marriageList:['未婚','离异','丧偶','已婚'],
+        childrenList: ['没有','有，和我住一起','有，有时和我住一起','有，不和我住一起'],
+        housingList: ['以后再告诉你','与父母同住','租房','已购房(有贷款)','已购房(无贷款)','住单位房','住亲朋家','需要时购置'],
+        carList: ['未购车','已购车','单位用车','需要时购置'],
+        occupationList:['计算机/互联网','电子电器/通信技术','机械/仪器仪表','销售','客服及技术支持','财务/审计/税务','证券/金融/投资/银行','保险','生产/营运','质量/安全管理','工程/能源','贸易/采购','物流/仓储/运输','技工','化工/环保','生物/制药/医疗器械','医院/医疗/护理','广告','市场/公关','影视/媒体','写作/出版/印刷','翻译','艺术/设计/创意','建筑/房地产/装饰装修','物业管理','人力资源','高级经营管理','行政/后勤','咨询/顾问','律师/法务/合规','教育/培训','科研','酒店/旅游/餐饮/娱乐 ','美容/健身','商业零售服务','交通运输服务','保安/家政服务','警察/其它','公务员','运动员','农/林/牧/渔','自由职业/兼职','储备干部/培训生/实习生','在校学生','退休','其它'],
       }
     }
   }
