@@ -1,32 +1,5 @@
 <template>
   <div class="footerbar-nav">
-    <!-- <mt-tabbar>
-      <div id="tab1" class="footerbar-tab">
-        <router-link tag="a" to="/meet" class="footerbar-link meet" activeClass="active" exact  style="height: 50px;">
-          <p class="title">邂逅</p>
-        </router-link>
-      </div>
-      <div id="tab2" class="footerbar-tab">
-        <router-link tag="a" to="/search" class="footerbar-link search" activeClass="active" exact>
-          <p class="title">搜索</p>
-        </router-link>
-      </div>
-      <div id="tab3" class="footerbar-tab">
-        <router-link tag="a" to="/message" class="footerbar-link message" activeClass="active" exact>
-          <p class="title">消息</p>
-        </router-link>
-      </div>
-      <div id="tab4" class="footerbar-tab">
-        <router-link tag="a" to="/vip" class="footerbar-link vip" activeClass="active" exact>
-          <p class="title">VIP</p>
-        </router-link>
-      </div>
-      <div id="tab5" class="footerbar-tab">
-        <router-link tag="a" to="/myinfo" class="footerbar-link title" activeClass="active" exact>
-          <p class="title">我的</p>
-        </router-link>
-      </div>
-    </mt-tabbar> -->
     <div id="footer">
       <div id="comFooter" style="display: block;">
         <ul class="navBott">
@@ -71,77 +44,6 @@
 </template>
 
 <style type="text/css" lang="scss">
-  // .footerbar-nav{
-  //   height:33px!important;
-  //   position: fixed;
-  //   bottom: 0;
-  //   width: 100%;
-  //   z-index: 2;
-  //   background-color: #f60;
-  //   .footerbar-tab{
-  //     padding-top:7px;
-  //     display:flex;
-  //     flex:1;
-  //     background-color: #ff0;
-  //     .active{
-  //       .title{
-  //         color:#ff5e00;
-  //       }
-  //     }
-  //     .footerbar-link{
-  //       position: relative;
-  //       display: block;
-  //       padding-top: 22px;
-  //       margin: 0 0 0 -14px;
-  //       text-align: center;
-  //       width: 100%;
-  //       .title{
-  //         height:20px;
-  //         line-height: 20px;
-  //         font-size: 12px;
-  //         text-align: center;
-  //         padding-left: 26px;
-  //       }
-  //     }
-  //   }
-  // }
-  // .footerbar-link::before{
-  //   content:"";
-  //   width: 28px;
-  //   height: 22px;
-  //   position: absolute;
-  //   top:0;
-  //   left: 50%;
-  //   background: url("../../public/vender/images/navBottBg.png") no-repeat center top;
-  //   background-size: 100% auto;
-  // }
-  // .footerbar-tab:nth-child(1) .footerbar-link.active::before{
-  //   background-position: 0 -110px;
-  // }
-  // .footerbar-tab:nth-child(2) .footerbar-link::before{
-  //   background-position: 0 -22px;
-  // }
-  // .footerbar-tab:nth-child(2) .footerbar-link.active::before{
-  //   background-position: 0 -132px;
-  // }
-  // .footerbar-tab:nth-child(3) .footerbar-link::before{
-  //   background-position: 0 -44px;
-  // }
-  // .footerbar-tab:nth-child(3) .footerbar-link.active::before{
-  //   background-position: 0 -264px;
-  // }
-  // .footerbar-tab:nth-child(4) .footerbar-link::before{
-  //   background-position: 0 -219px;
-  // }
-  // .footerbar-tab:nth-child(4) .footerbar-link.active::before{
-  //   background-position: 0 -241px;
-  // }
-  // .footerbar-tab:nth-child(5) .footerbar-link::before{
-  //   background-position: 0 -88px;
-  // }
-  // .footerbar-tab:nth-child(5) .footerbar-link.active::before{
-  //   background-position: 0 -198px;
-  // }
   .navBott {
     width:100%;
     position:fixed;
