@@ -34,7 +34,7 @@
   </div>
 </template>
 
-<style >
+<style scoped type="text/css">
 *{ padding: 0; margin: 0; } 
 a{ text-decoration: none; }
 
@@ -46,77 +46,78 @@ a{ text-decoration: none; }
         padding: 0px;
         background: rgb(238, 238, 238);
         display: block;
-} 
-.modeCont{
-    position: relative;
-    width:290px;
-    height: 365px;
-    margin: 0 auto;
-    text-align: center;
-    background: url(http://static5.baihe.com/images/newH5/photoBg.gif) no-repeat;
-    background-size: 100% auto;
-    overflow: hidden;
-}
-.xhLove{
-     padding: 0 0 48px;
-    text-align: center;
-}
+    } 
+    .modeCont{
+        position: relative;
+        width:290px;
+        height: 365px;
+        margin: 0 auto;
+        text-align: center;
+        background: url(http://static5.baihe.com/images/newH5/photoBg.gif) no-repeat;
+        background-size: 100% auto;
+        overflow: hidden;
+    }
+    .xhLove{
+         padding: 0 0 48px;
+        text-align: center;
+    }
 
-.xhLove .lick {
-    display: inline-block;
-    width: 53px;
-    height: 53px;
-    margin: 0 25px;
-    text-indent: -999em;
-    background: url(http://static5.baihe.com/images/newH5/aPic.png) no-repeat;
-    background-size: 100% auto;
-    outline: none;
-}
-.xhLove div:nth-child(1) {
-    background-position: 0 -53px;
-}
+    .xhLove .lick {
+        display: inline-block;
+        width: 53px;
+        height: 53px;
+        margin: 0 25px;
+        text-indent: -999em;
+        background: url(http://static5.baihe.com/images/newH5/aPic.png) no-repeat;
+        background-size: 100% auto;
+        outline: none;
+    }
+    .xhLove div:nth-child(1) {
+        background-position: 0 -53px;
+    }
 
-.xhLove div:nth-child(2) {
-    background-position: 0 0;
-}
-.xhphotoBox {
-    position: absolute;
-    top: 49px;
-    left: 72px;
-    width: 268px;
-    height: 327px;
-    padding: 6px 0 0;
-    background: #fff;
-    border: 1px solid #f3f3f4;
-}
+    .xhLove div:nth-child(2) {
+        background-position: 0 0;
+    }
+    .xhphotoBox {
+        position: absolute;
+        top: 49px;
+        left: 50%;
+        width: 268px;
+        height: 327px;
+        padding: 6px 0 0;
+        background: #fff;
+        border: 1px solid #f3f3f4;
+        transform: translate(-50%);
+    }
 
-.xhphotoBox .aPhoto em {
-    display: none;
-    position: absolute;
-    bottom: 10px;
-    left: 90px;
-    width: 120px;
-    height: 104px;
-    text-indent: -999em;
-    background-size: 100% auto;
-}
-.xhphotoBox p {
-    padding: 10px 0 0;
-}
-.xhphotoBox p img {
-    position: relative;
-    top: 2px;
-    padding: 0 0 0 6px;
-}
-.xhphotoBox span {
-    padding: 0 6px;
-    color: #666;
-    font: 15px/26px microsoft yahei;
-}
-.xhphotoBo a img{
-    width: 225px;
-    height: 225px;
-}
+    .xhphotoBox .aPhoto em {
+        display: none;
+        position: absolute;
+        bottom: 10px;
+        left: 90px;
+        width: 120px;
+        height: 104px;
+        text-indent: -999em;
+        background-size: 100% auto;
+    }
+    .xhphotoBox p {
+        padding: 10px 0 0;
+    }
+    .xhphotoBox p img {
+        position: relative;
+        top: 2px;
+        padding: 0 0 0 6px;
+    }
+    .xhphotoBox span {
+        padding: 0 6px;
+        color: #666;
+        font: 15px/26px microsoft yahei;
+    }
+    .xhphotoBo a img{
+        width: 225px;
+        height: 225px;
+    }
 </style>
 
 <script>
