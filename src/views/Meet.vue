@@ -9,7 +9,7 @@
 
     </div>
 
-    <div class="xhphotoBox"  v-for='data in looplist' >
+    <div class="xhphotoBox"  v-for='data in looplist' @click="going(data.userID)">
         <router-link to="/meet/information" tag="a" class="goToProfileA">
             <img :src="data.headPhotoUrl_120_150" style=" width: 245px;
     height: 245px; ">
@@ -147,6 +147,9 @@ export default {
     },
     yes () {
       this.looplist.pop()
+    },
+    going(id){
+         this.$router.push(`/xqym/${id}`)
     }
   }
 }
