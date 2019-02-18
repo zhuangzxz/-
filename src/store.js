@@ -5,10 +5,10 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-  	myInfo: {
-  		isShowBack: false
-  		// backToHref:"#/myinfo"
-  	},
+    myInfo: {
+      isShowBack: false
+      // backToHref:"#/myinfo"
+    },
     mainPanel: {
       isFooterBarShow: true
     }
