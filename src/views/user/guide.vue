@@ -147,7 +147,7 @@
     mounted () {
       var self = this
       this.intervalId = setInterval(function () {
-        if (self.scale > 99) {
+        if (self.scale > 95) {
           clearInterval(self.intervalId)
           self.isLoading = false
           return
