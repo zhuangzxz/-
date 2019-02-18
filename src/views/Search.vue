@@ -47,17 +47,21 @@ export default {
       hea: 160
     }
   },
-  mounted () {
-    axios({
-      url: 'data/f/getmembership',
-      params: {
-        limit: 200
-
-      }
-
-    }).then(res => {
-      this.looplist = res.data.data
-    })
+  mounted(){
+    if(this.$store.state.searchInfo.looplist.length!==0){
+      this.looplist = this.$store.state.searchInfo.looplist;
+    }else{
+      axios({
+        url: 'data/f/getmembership',
+        params: {
+          cityid:'862102',
+          page: 1,
+          limit: 10
+        }
+      }).then(result => {
+        this.$store.commit('setSearchInfoLoopList', result.data.data)
+      }).catch(err => {})
+    }
   },
   methods: {
     locClick (id) {

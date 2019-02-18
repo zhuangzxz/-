@@ -20,6 +20,9 @@ export default new Vuex.Store({
     },
     publicData: {
       weatherData:{}
+    },
+    searchInfo: {
+      looplist:[]
     }
   },
   mutations: {
@@ -31,6 +34,9 @@ export default new Vuex.Store({
     },
     setMeetInfoLoopList(state, payload){
       this.state.meetInfo.looplist = payload;
+    },
+    setSearchInfoLoopList(state, payload){
+      this.state.searchInfo.looplist = payload;
     },
     changeMyInfoHeadBarShowBack (state, payload) {
       this.state.myInfo.isShowBack = payload
