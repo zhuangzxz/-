@@ -6,16 +6,16 @@
       <mt-button icon="back"></mt-button>
       </router-link>
       </mt-header>
-      </div> 
+      </div>
     <div class="userPicT">
         <h5 class="bg"></h5>
       <div class="pic">
         <img src="http://photo8.baihe.com/2019/02/15/100_100/57A9B5E57AF9A86A79A35B36288B6140.jpg">
-      </div> 
+      </div>
        <div class="bottom">
         <span>24岁 · 160厘米</span>
         <img src="//static5.baihe.com/images/newH5/userIcon2.png" width="17" height="17">
-      </div> 
+      </div>
     </div>
    <div class="photoList" style="overflow: auto hidden;
     margin: 0px auto;
@@ -24,20 +24,20 @@
        <ul>
            <li>
              <router-link to="" tag="a">
-               <img src="http://photo1.baihe.com/2019/02/15/190_190/57A9B5E57AF9A86A79A35B36288B6140.jpg"> 
+               <img src="http://photo1.baihe.com/2019/02/15/190_190/57A9B5E57AF9A86A79A35B36288B6140.jpg">
              </router-link>
            </li>
        </ul>
-   </div> 
+   </div>
    <div :class="index ? 'userTextQ':'userText'">
     <p>我希望自己不是这里的一个过客，盼望找到我爱的人，我会一直努力寻找，遇到了，珍惜，不放手。</p>
 
     <a href="javascript:;" class="clickZk" id="userIntroduce" @click="onclick" >点击展开</a>
-   </div> 
+   </div>
    <div class="userInforList zhanshi">
-    <ul> 
+    <ul>
         <li style="text-align:left">学历<span>高中</span></li>
-        <li><span>2000-5000元</span>月收入</li> 
+        <li><span>2000-5000元</span>月收入</li>
         <li><span>北京东城</span> 居住地 </li>
     </ul>
     <div style="display:none; border-top-style:none; padding-bottom:114px;">
@@ -67,7 +67,7 @@
     </div>
     <a href="javascript:;" class="clickZk" id="profileUIfo">点击展开</a>
     </div>
-     <div class="btnLine" id="sendMsgAndSayHello">    <a href="javascript:;" class="orgBtn orgBtn4 userBtn" id="sayHello">打招呼</a>    <a href="javascript:;" class="orgBtn userBtn" id="sendMsgA">发消息</a></div>   
+     <div class="btnLine" id="sendMsgAndSayHello">    <a href="javascript:;" class="orgBtn orgBtn4 userBtn" id="sayHello">打招呼</a>    <a href="javascript:;" class="orgBtn userBtn" id="sendMsgA">发消息</a></div>
     </div>
 
 </template>
@@ -119,7 +119,7 @@ padding: 0;}
     left: 50%;
     width: 156px;
     height: 22px;
-    
+
     margin: 0 0 0 -78px;
     z-index: 205;
 }
@@ -132,7 +132,6 @@ padding: 0;}
     padding: 0 0 0 5px;
     vertical-align: middle;
     }
-
 
 .photoList {
     height: 64px;
@@ -283,21 +282,18 @@ padding: 0;}
 </style>
 
 <script type="text/javascript">
-  export default {
-    data(){
-        return {                
-        index: false,
-        
-     }
+export default {
+  data () {
+    return {
+      index: false
 
-    },
-    methods:{
-    onclick() {
-      this.index =!this.index;// 把当前点击元素的index，赋值给activeClass
-    
     }
-}
+  },
+  methods: {
+    onclick () {
+      this.index = !this.index// 把当前点击元素的index，赋值给activeClass
+    }
   }
+}
 
 </script>
-

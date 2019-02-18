@@ -7,8 +7,7 @@
 <style type="text/css"></style>
 
 <script type="text/javascript">
-  export default {
+export default {
 
-  }
+}
 </script>
-

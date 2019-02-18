@@ -27,57 +27,55 @@
   </div>
 </template>
 
-
 <script type="text/javascript">
 import headers from './searchs/SearchsHeader'
 import Vue from 'vue'
 import axios from 'axios'
-  export default {
-        components:{
-            headers
-        },
-        data(){
+export default {
+  components: {
+    headers
+  },
+  data () {
+    return {
+      looplist: [],
+      age: 23,
+      hea: 160
+    }
+  },
+  mounted () {
+    axios({
+      url: 'data/f/getmembership',
+      params: {
+        limit: 200
 
-        return{
-           looplist:[],
-           age:23,
-           hea:160
-        }  
-      },
-       mounted(){
-        axios({
-            url:"data/f/getmembership",
-            params:{
-                limit:200
-
-            }
-          
-         }).then(res=>{
-            this.looplist= res.data.data;
-        })
-      },
-      methods:{
-        locClick(id){
-            this.$router.push(`/xqym/${id}`);
-        },
-        myevent(ev){
-            console.log(ev)
-            this.age=ev.age
-            this.hea=ev.stature
-             axios({
-            url:"data/f/getmembership",
-            params:{
-                limit:200,
-                age: this.age,
-                height:this.hea
-            }
-          
-         }).then(res=>{
-            this.looplist= res.data.data;
-        })
-        }
       }
+
+    }).then(res => {
+      this.looplist = res.data.data
+    })
+  },
+  methods: {
+    locClick (id) {
+      this.$router.push(`/xqym/${id}`)
+    },
+    myevent (ev) {
+      console.log(ev)
+      this.age = ev.age
+      this.hea = ev.stature
+      axios({
+        url: 'data/f/getmembership',
+        params: {
+          limit: 200,
+          age: this.age,
+          height: this.hea
+        }
+
+      }).then(res => {
+        this.looplist = res.data.data
+      })
+    }
   }
+}
 </script>
 <style scoped lang="scss">
     ul{
@@ -164,7 +162,7 @@ import axios from 'axios'
                 span:nth-child(2){
                     border-right: 1px solid #e3e3e3;
                     color:#6a91c6;
-                   
+
                 }
                 span:nth-child(3){
                     color:#ff6400;
@@ -173,5 +171,3 @@ import axios from 'axios'
         }
     }
 </style>
-
-

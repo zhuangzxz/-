@@ -16,12 +16,11 @@
 </style>
 
 <script type="text/javascript">
-  import myinfoHeader from './myinfo/myinfoheader'
+import myinfoHeader from './myinfo/myinfoheader'
 
-  export default {
-    components:{
-      myinfoHeader
-    }
+export default {
+  components: {
+    myinfoHeader
   }
+}
 </script>
-

@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <div class="searchheader">
     <span class="one">年龄:{{ageA}}</span>
     <span class="two">身高:{{statureA}}</span>
@@ -9,73 +9,72 @@
          <span class="nl">身高:<u @click="vanclicks('statureA')">{{statureA}}</u>cm</span>
         <button @click="btClick()">搜索</button>
         <van-popup v-model="show" position="bottom" :overlay="true">
-           <van-picker show-toolbar title="标题" :columns="columns" @cancel="onCancel" @confirm="onConfirm" ref="zz"/> 
+           <van-picker show-toolbar title="标题" :columns="columns" @cancel="onCancel" @confirm="onConfirm" ref="zz"/>
         </van-popup>
         <van-popup v-model="statureShow" position="bottom" :overlay="true">
-           <van-picker show-toolbar title="标题" :columns="stature" @cancel="onCancel" @confirm="onConfirm" ref="zz"/> 
+           <van-picker show-toolbar title="标题" :columns="stature" @cancel="onCancel" @confirm="onConfirm" ref="zz"/>
         </van-popup>
     </div>
   </div>
 </template>
 
-
 <script type="text/javascript">
-import Vue from "vue"
-import 'vant/lib/button/style';
-import 'vant/lib/index.css';
-import { Picker } from 'vant';
-import { Popup } from 'vant';
-Vue.use(Picker);
-Vue.use(Popup);
-  export default {
-    data(){
-        return {
-            ageA:"不限",
-            ageB:25,
-            statureA:"不限",
-            statureB:200,
-            isShow:false,
-            show:false,
-            statureShow:false,
-            current: null,
-            columns: [22,23,24,25,26,27,28,29,30],
-            stature: [160,161,162,163,164,165,167,168,169,170,171,172,173,174,175,176,177,178,179,180]
-        }
-    },
-    methods:{
-       handclick(){
-        this.isShow=!this.isShow
-       },
-       onSelect(item) {
-      // 点击选项时默认不会关闭菜单，可以手动关闭
-      this.show = false;
-      Toast(item.name);
-    },
-    vanclick(current){
-        this.show=!this.show;
-        this.current = current;
-        // setTimeout(()=>{console.log(this.$refs.zz.getColumnIndex())},20)
-    },
-    vanclicks(current){
-        this.statureShow=!this.statureShow;
-        this.current = current;
-        // setTimeout(()=>{console.log(this.$refs.zz.getColumnIndex())},20)
-    },
-    onConfirm(value, index) {
-        this[this.current] = value;
-      this.show=false;
-      this.statureShow=false;
-    },
-    onCancel() {
-      this.show=false;
-      this.statureShow=false;
-    },
-    btClick(){
-        this.isShow=false;
-        this.$emit("event",{ age: this.ageA, stature:this.statureA})
+import Vue from 'vue'
+import 'vant/lib/button/style'
+import 'vant/lib/index.css'
+import { Picker } from 'vant'
+import { Popup } from 'vant'
+Vue.use(Picker)
+Vue.use(Popup)
+export default {
+  data () {
+    return {
+      ageA: '不限',
+      ageB: 25,
+      statureA: '不限',
+      statureB: 200,
+      isShow: false,
+      show: false,
+      statureShow: false,
+      current: null,
+      columns: [22, 23, 24, 25, 26, 27, 28, 29, 30],
+      stature: [160, 161, 162, 163, 164, 165, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180]
     }
+  },
+  methods: {
+    handclick () {
+      this.isShow = !this.isShow
+    },
+    onSelect (item) {
+      // 点击选项时默认不会关闭菜单，可以手动关闭
+      this.show = false
+      Toast(item.name)
+    },
+    vanclick (current) {
+      this.show = !this.show
+      this.current = current
+      // setTimeout(()=>{console.log(this.$refs.zz.getColumnIndex())},20)
+    },
+    vanclicks (current) {
+      this.statureShow = !this.statureShow
+      this.current = current
+      // setTimeout(()=>{console.log(this.$refs.zz.getColumnIndex())},20)
+    },
+    onConfirm (value, index) {
+      this[this.current] = value
+      this.show = false
+      this.statureShow = false
+    },
+    onCancel () {
+      this.show = false
+      this.statureShow = false
+    },
+    btClick () {
+      this.isShow = false
+      this.$emit('event', { age: this.ageA, stature: this.statureA })
     }
   }
+}
 </script>
 <style scoped lang="scss">
 *{
@@ -142,7 +141,7 @@ Vue.use(Popup);
                 margin-right:15px
             }
         }
-       
+
     }
     .baa{
         background:#fff;

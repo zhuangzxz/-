@@ -29,11 +29,11 @@ html{
 </style>
 
 <script type="text/javascript">
-  import footerbarNav  from './components/FooterNavBar.vue'
+import footerbarNav from './components/FooterNavBar.vue'
 
-  export default{
-    components:{
-      footerbarNav
-    }
+export default {
+  components: {
+    footerbarNav
   }
+}
 </script>

@@ -6,16 +6,15 @@
     <div class="xhLove">
         <div class="lick" @click="no()" ></div>
         <div class="lick" @click="yes()"></div>
-    
+
     </div>
-    
+
     <div class="xhphotoBox"  v-for='data in looplist' >
         <router-link to="/meet/information" tag="a" class="goToProfileA">
             <img :src="data.headPhotoUrl_120_150" style=" width: 245px;
     height: 245px; ">
     </router-link>
-            
-        
+
         <p>
            <router-link to="/meet/information" tag="a" class="goToProfileA">{{data.nickname}}</router-link>
             <img src="//static5.baihe.com/images/newH5/userIcon2.png" width="17" height="17">
@@ -25,17 +24,17 @@
             <span>{{data.height}}cm</span>
             <span>{{data.educationChn}}</span>
             <span>{{data.incomeChn}}</span>
-        </router-link> 
-    </div> 
+        </router-link>
+    </div>
 
 </div>
-   
+
     <router-view></router-view>
   </div>
 </template>
 
 <style scoped type="text/css">
-*{ padding: 0; margin: 0; } 
+*{ padding: 0; margin: 0; }
 a{ text-decoration: none; }
 
     .meet{
@@ -46,7 +45,7 @@ a{ text-decoration: none; }
         padding: 0px;
         background: rgb(238, 238, 238);
         display: block;
-    } 
+    }
     .modeCont{
         position: relative;
         width:290px;
@@ -122,38 +121,34 @@ a{ text-decoration: none; }
 
 <script>
 import Vue from 'vue'
-import axios from 'axios';
-  export default {
-         data(){
+import axios from 'axios'
+export default {
+  data () {
+    return {
+      looplist: []
+    }
+  },
+  mounted () {
+    axios({
+      url: 'data/f/getmembership',
+      params: {
+        page: Math.floor(Math.random() * 100),
+        limit: 100
+      }
+    }).then(res => {
+      console.log(res.data)
+      this.looplist = res.data.data
+    })
+  },
 
-        return{
-           looplist:[]        
-        }  
-      },
-      mounted(){
-        axios({
-            url:"data/f/getmembership",
-            params:{
-                page:Math.floor(Math.random()*100),
-                limit:100
-            }
-         }).then(res=>{
-            console.log(res.data);
-            this.looplist= res.data.data;
-        })
-      },
-
-  methods:{
-    no(){
-       this.looplist.pop();
+  methods: {
+    no () {
+      this.looplist.pop()
     },
-     yes(){
-     this.looplist.pop()
-    },
+    yes () {
+      this.looplist.pop()
+    }
   }
 }
-  
-    
-  
-</script>
 
+</script>

@@ -1,7 +1,7 @@
 <template>
   <div class="footerbar-nav">
     <div id="footer">
-      <div id="comFooter" style="display: block;">
+      <div id="comFooter" style="display: block;" v-if="$store.state.mainPanel.isFooterBarShow">
         <ul class="navBott">
           <li>
             <router-link tag="a" to="/meet" activeClass="active" style="height: 50px;">邂逅</router-link>
@@ -36,7 +36,7 @@
           </a>
         </div>
         <div class="downNo" id="downNo" style="display:none;">
-          
+
         </div>
       </div>
     </div>
@@ -75,7 +75,7 @@
         font-family: microsoft yahei;
         text-align: center;
         text-decoration: none;
-        
+
       }
       a.active {
           color: #ff5e00;
@@ -93,24 +93,24 @@
       }
     }
 
-    .navBott li:nth-child(1) a.active:before {
+    li:nth-child(1) a.active:before {
       background-position: 0 -110px;
     }
-    .navBott li:nth-child(1) a:before {
+    li:nth-child(1) a:before {
       background-position: 0 0;
     }
 
-    .navBott li:nth-child(2) a.active:before {
+    li:nth-child(2) a.active:before {
       background-position: 0 -132px;
     }
-    .navBott li:nth-child(2) a:before {
+    li:nth-child(2) a:before {
       background-position: 0 -22px;
     }
 
-    .navBott li:nth-child(3) a.active:before {
+    li:nth-child(3) a.active:before {
      background-position: 0 -264px;
     }
-    .navBott li:nth-child(3) a:before {
+    li:nth-child(3) a:before {
       background-position: 0 -44px;
     }
 
@@ -145,15 +145,15 @@
 </style>
 
 <script type="text/javascript">
-  import { Tabbar, TabItem } from 'mint-ui';
-  import Vue from 'vue'
+import { Tabbar, TabItem } from 'mint-ui'
+import Vue from 'vue'
 
-  import 'mint-ui/lib/style.css';
- 
-  Vue.component(Tabbar.name, Tabbar);
-  Vue.component(TabItem.name, TabItem);
+import 'mint-ui/lib/style.css'
 
-  export default{
+Vue.component(Tabbar.name, Tabbar)
+Vue.component(TabItem.name, TabItem)
 
-  }
+export default {
+
+}
 </script>

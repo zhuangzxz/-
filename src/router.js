@@ -2,26 +2,28 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 
-import MeetView  from './views/Meet.vue'
-import SearchView  from './views/Search.vue'
-import MessageView  from './views/Message.vue'
-import VipView  from './views/Vip.vue'
+import MeetView from './views/Meet.vue'
+import SearchView from './views/Search.vue'
+import MessageView from './views/Message.vue'
+import VipView from './views/Vip.vue'
 
-import MyInfoView  from './views/MyInfo.vue'
+import MyInfoView from './views/MyInfo.vue'
 import xqym from './views/xqym.vue'
-import MainPannel  from './views/myinfo/mainpanel.vue'
-import profileSetPannel  from './views/myinfo/profileset'
+import MainPannel from './views/myinfo/mainpanel.vue'
+import profileSetPannel from './views/myinfo/profileset'
+import guildPannel from './views/user/guide'
+import basicinfoPanel from './views/myinfo/basicinfo.vue'
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'hash',
-  //base: process.env.BASE_URL,
+  // base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
       name: 'home',
-      redirect: '/meet'
+      component: guildPannel
     },
     {
       path: '/meet',
@@ -42,7 +44,7 @@ export default new Router({
       path: '/vip',
       name: 'vip',
       component: VipView
-    },{
+    }, {
       path: '/xqym/:zzid',
       name: 'xqym',
       component: xqym
@@ -51,7 +53,7 @@ export default new Router({
       path: '/myinfo',
       name: 'myinfo',
       component: MyInfoView,
-      children:[
+      children: [
         {
           path: '',
           name: 'mainpannel',
@@ -66,6 +68,11 @@ export default new Router({
           path: 'profileset',
           name: 'profileset',
           component: profileSetPannel
+        },
+        {
+          path: 'basicinfo',
+          name: 'basicinfo',
+          component: basicinfoPanel
         }
       ]
     },
