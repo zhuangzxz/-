@@ -1,12 +1,12 @@
 ﻿<template>
   <div class="searchheader">
-    <span class="one">年龄:{{ageA}}-{{ageB}}岁</span>
-    <span class="two">身高:{{statureA}}-{{statureB}}厘米</span>
+    <span class="one">年龄:{{ageA}}</span>
+    <span class="two">身高:{{statureA}}</span>
     <span class="three">交友</span>
     <span class="four" @click="handclick()"></span>
     <div class="box" v-show="isShow">
-        <span class="nl">年龄:<u @click="vanclick('ageA')">{{ageA}}</u>-<u @click="vanclick('ageB')">{{ageB}}</u>岁</span>
-         <span class="nl">身高:<u @click="vanclicks('statureA')">{{statureA}}</u>-<u @click="vanclicks('statureB')">{{statureB}}</u>厘米</span>
+        <span class="nl">年龄:<u @click="vanclick('ageA')">{{ageA}}</u>岁</span>
+         <span class="nl">身高:<u @click="vanclicks('statureA')">{{statureA}}</u>cm</span>
         <button @click="btClick()">搜索</button>
         <van-popup v-model="show" position="bottom" :overlay="true">
            <van-picker show-toolbar title="标题" :columns="columns" @cancel="onCancel" @confirm="onConfirm" ref="zz"/> 
@@ -30,16 +30,16 @@ Vue.use(Popup);
   export default {
     data(){
         return {
-            ageA:18,
+            ageA:"不限",
             ageB:25,
-            statureA:145,
+            statureA:"不限",
             statureB:200,
             isShow:false,
             show:false,
             statureShow:false,
             current: null,
-            columns: [18,19,20,21,22,23,24,25,26,27,28,29,30],
-            stature: [145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190]
+            columns: [22,23,24,25,26,27,28,29,30],
+            stature: [160,161,162,163,164,165,167,168,169,170,171,172,173,174,175,176,177,178,179,180]
         }
     },
     methods:{
@@ -71,7 +71,8 @@ Vue.use(Popup);
       this.statureShow=false;
     },
     btClick(){
-        this.isShow=false
+        this.isShow=false;
+        this.$emit("event",{ age: this.ageA, stature:this.statureA})
     }
     }
   }

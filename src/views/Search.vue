@@ -1,8 +1,8 @@
 <template>
   <div class="search">
-    <headers></headers>
+    <headers @event="myevent($event)"></headers>
     <ul>
-        <li   v-for='data in looplist' >
+        <li v-for='data in looplist' @click="locClick(data.userID)">
             <div class="top">
                 <dl>
                     <dt>
@@ -39,7 +39,9 @@ import axios from 'axios'
         data(){
 
         return{
-           looplist:[]        
+           looplist:[],
+           age:23,
+           hea:160
         }  
       },
        mounted(){
@@ -47,13 +49,33 @@ import axios from 'axios'
             url:"data/f/getmembership",
             params:{
                 limit:200
+
             }
           
          }).then(res=>{
-            console.log(res.data);
             this.looplist= res.data.data;
-            console.log(res.data.data)
         })
+      },
+      methods:{
+        locClick(id){
+            this.$router.push(`/xqym/${id}`);
+        },
+        myevent(ev){
+            console.log(ev)
+            this.age=ev.age
+            this.hea=ev.stature
+             axios({
+            url:"data/f/getmembership",
+            params:{
+                limit:200,
+                age: this.age,
+                height:this.hea
+            }
+          
+         }).then(res=>{
+            this.looplist= res.data.data;
+        })
+        }
       }
   }
 </script>

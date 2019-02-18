@@ -7,6 +7,7 @@ import SearchView  from './views/Search.vue'
 import MessageView  from './views/Message.vue'
 import VipView  from './views/Vip.vue'
 import MyInfoView  from './views/MyInfo.vue'
+import xqym from './views/xqym.vue'
 
 Vue.use(Router)
 
@@ -38,6 +39,10 @@ export default new Router({
       path: '/vip',
       name: 'vip',
       component: VipView
+    },{
+      path: '/xqym/:zzid',
+      name: 'xqym',
+      component: xqym
     },
     {
       path: '/myinfo',
