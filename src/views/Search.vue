@@ -110,6 +110,12 @@ export default {
     lick () {
       Toast('已添加到喜欢列表，请到我的中查看！')
     }
+  },
+  created(){
+    if(!this.$store.state.userData.isLogin){
+      Toast(`登录状态过期，请重新登录`)
+      setTimeout(()=>{this.$router.push('/')},1000);
+    }
   }
 }
 </script>

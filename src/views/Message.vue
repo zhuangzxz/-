@@ -94,10 +94,18 @@ p{
 </style>
 
 <script type="text/javascript">
+    import { Toast } from 'vant'
 export default {
   methods: {
     zsxClick () {
       location.href = 'http://i.baihe.com/#ctrl=pay&act=redline'
+    }
+  },
+  created () {
+    this.$store.commit('changeMainPanelFooterBar', true);
+    if(!this.$store.state.userData.isLogin){
+      Toast(`登录状态过期，请重新登录`)
+      setTimeout(()=>{this.$router.push('/')},1000);
     }
   }
 }

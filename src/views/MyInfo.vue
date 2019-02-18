@@ -17,10 +17,16 @@
 
 <script type="text/javascript">
 import myinfoHeader from './myinfo/myinfoheader'
-
+import { Toast } from 'vant'
 export default {
   components: {
     myinfoHeader
+  },
+  created(){
+    if(!this.$store.state.userData.isLogin){
+      Toast(`登录状态过期，请重新登录`)
+      setTimeout(()=>{this.$router.push('/')},1000);
+    }
   }
 }
 </script>

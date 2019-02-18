@@ -27,7 +27,7 @@
             <div id="con_reg" v-if="isSelect">
               <ul class="loginListN">
                 <li class="mobile">
-                  <input name="vRegTxtAcc" id="vRegTxtAcc" type="tel" placeholder="请输入手机号码" maxlength="11" autofocus="autofocus">
+                  <input name="vRegTxtAcc" id="vRegTxtAcc" type="tel" placeholder="请输入手机号码" maxlength="11" autofocus="autofocus" v-model="regTel">
                   <a id="clearUName" class="del"></a>
                 </li>
                 <li class="code">
@@ -36,7 +36,7 @@
                 </li>
                 <li class="pwd">
                   <em id="pwdHtml">
-                    <input name="vRegTxtPwd" id="vRegTxtPwd" type="password" placeholder="请输入6-16位字母/数字密码" maxlength="16">
+                    <input name="vRegTxtPwd" id="vRegTxtPwd" type="password" placeholder="请输入6-16位字母/数字密码" maxlength="16" v-model="regPassword">
                   </em>
                   <em class="icon">
                     <a id="clearPwd" class="del"></a><a id="showPwd" class="eye"></a>
@@ -64,12 +64,12 @@
             <div id="con_log" v-if="!isSelect">
               <ul class="loginListN">
                 <li class="mobile">
-                  <input name="vLoginTxtAcc" id="vLoginTxtAcc" type="text" placeholder="请输入手机号码或邮箱" autofocus="autofocus">
+                  <input name="vLoginTxtAcc" id="vLoginTxtAcc" type="text" placeholder="请输入手机号码或邮箱" autofocus="autofocus" v-model="loginTel">
                   <a id="clearUName1" class="del delC"></a>
                 </li>
                 <li class="pwd">
                   <span id="pwdHtml1">
-                    <input name="vLoginTxtPwd" id="vLoginTxtPwd" type="password" placeholder="请输入密码" maxlength="20">
+                    <input name="vLoginTxtPwd" id="vLoginTxtPwd" type="password" placeholder="请输入密码" maxlength="20" v-model="loginPassword">
                   </span>
                   <a id="clearPwd1" class="del"></a>
                 </li>
@@ -127,7 +127,11 @@ export default {
       isRegister: true,
       isSelect: true,
       isLoginDataOk: true,
-      isRegisterDataOk: false
+      isRegisterDataOk: true,
+      regTel: '',
+      regPassword: '',
+      loginTel:'',
+      loginPassword:''
     }
   },
   mounted () {
@@ -135,28 +139,44 @@ export default {
     this.$store.commit('changeMyInfoHeadBarShowBack', false)
   },
   methods: {
-    onResisterButton: function () {
+    onHandelLogin () {
+      console.log('收到登录点击事件')
       axios({
-        url: '/data/user/register',
+        url: '/data/user/login',
         method: 'post',
         data: {
-          tel: '15998511234',
-          password: 'test'
+          tel: this.loginTel,
+          password: this.loginPassword
         }
       }).then(result => {
         console.log(result.data)
+        if(result.data.ok){
+          this.$store.commit('setUserDataIsLogin', true)
+          this.$router.push('/meet')
+        }
         Toast(`${result.data.msg}`)
       }).catch(err => {
         console.log(err)
       })
     },
-    onHandelLogin () {
-      console.log('收到登录点击事件')
-      this.$store.commit('setUserDataIsLogin', true)
-      this.$router.push('/meet')
-    },
     onHandelRegister () {
-      console.log('收到注册点击事件')
+      axios({
+        url: '/data/user/register',
+        method: 'post',
+        data: {
+          tel: this.regTel,
+          password: this.regPassword
+        }
+      }).then(result => {
+        console.log(result.data)
+        if(result.data.ok){
+          this.isSelect=false;
+        }
+        Toast(`${result.data.msg}`)
+      }).catch(err => {
+        console.log(err)
+      })
+
     }
   }
 }

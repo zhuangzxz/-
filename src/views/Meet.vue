@@ -175,6 +175,7 @@ a{ text-decoration: none; }
 <script>
 import Vue from 'vue'
 import axios from 'axios'
+import { Toast } from 'vant'
 export default {
   data () {
     return {
@@ -182,19 +183,13 @@ export default {
     }
   },
   created () {
-    this.$store.commit('changeMainPanelFooterBar', true)
+    this.$store.commit('changeMainPanelFooterBar', true);
+    if(!this.$store.state.userData.isLogin){
+      Toast(`登录状态过期，请重新登录`)
+      setTimeout(()=>{this.$router.push('/')},1000);
+    }
   },
   mounted () {
-    // axios({
-    //   url: 'data/f/getmembership',
-    //   params: {
-    //     page: Math.floor(Math.random() * 100),
-    //     limit: 100
-    //   }
-    // }).then(res => {
-    //   console.log(res.data)
-    //   this.looplist = res.data.data
-    // })
     if (this.$store.state.meetInfo.looplist.length !== 0) {
       this.looplist = this.$store.state.meetInfo.looplist
     } else {

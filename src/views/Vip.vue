@@ -200,7 +200,13 @@
 </style>
 
 <script type="text/javascript">
-export default {
-
-}
+  import { Toast } from 'vant'
+  export default {
+    created(){
+      if(!this.$store.state.userData.isLogin){
+        Toast(`登录状态过期，请重新登录`)
+        setTimeout(()=>{this.$router.push('/')},1000);
+      }
+    }
+  }
 </script>
