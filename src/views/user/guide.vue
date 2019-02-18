@@ -135,28 +135,45 @@
 </style>
 
 <script type="text/javascript">
-export default {
-  data () {
-    return {
-      scale: 5,
-      isLoading: true,
-      intervalId: 0
-    }
-  },
-  mounted () {
-    var self = this
-    this.intervalId = setInterval(function () {
-      if (self.scale > 99) {
-        clearInterval(self.intervalId)
-        self.isLoading = false
-        return
+  import axios from 'axios'
+  export default {
+    data () {
+      return {
+        scale: 5,
+        isLoading: true,
+        intervalId: 0
       }
-      self.scale += 1
-    }, 38)
-    this.$store.commit('changeMainPanelFooterBar', false)
-  },
-  destroyed () {
-    this.$store.commit('changeMainPanelFooterBar', true)
+    },
+    mounted () {
+      var self = this
+      this.intervalId = setInterval(function () {
+        if (self.scale > 99) {
+          clearInterval(self.intervalId)
+          self.isLoading = false
+          return
+        }
+        self.scale += 1
+      }, 20)
+      axios({
+        url: 'data/f/getmembership',
+        params: {
+          page: Math.floor(Math.random() * 100),
+          limit: 100
+        }
+      }).then(result => {
+        this.$store.commit('setMeetInfoLoopList', result.data.data)
+        this.looplist = result.data.data
+      })
+
+      axios.get('/data/weather').then(result => {
+        console.log('weatherData',result.data.data)
+        this.$store.commit('setPublicWeatherData', result.data.data)
+      })
+
+      this.$store.commit('changeMainPanelFooterBar', false)
+    },
+    destroyed () {
+      this.$store.commit('changeMainPanelFooterBar', true)
+    }
   }
-}
 </script>

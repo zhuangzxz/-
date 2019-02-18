@@ -11,9 +11,21 @@ export default new Vuex.Store({
     },
     mainPanel: {
       isFooterBarShow: true
+    },
+    meetInfo: {
+      looplist:[]
+    },
+    publicData: {
+      weatherData:{}
     }
   },
   mutations: {
+    setPublicWeatherData(state, payload){
+      this.state.publicData.weatherData = payload;
+    },
+    setMeetInfoLoopList(state, payload){
+      this.state.meetInfo.looplist = payload;
+    },
     changeMyInfoHeadBarShowBack (state, payload) {
       this.state.myInfo.isShowBack = payload
       // this.state.myInfo.backToHref = href;
