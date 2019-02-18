@@ -197,7 +197,6 @@ export default {
     // })
     if(this.$store.state.meetInfo.looplist.length!==0){
       this.looplist = this.$store.state.meetInfo.looplist;
-      console.log('加载缓存会员数据')
     }else{
       axios({
         url: 'data/f/getmembership',
