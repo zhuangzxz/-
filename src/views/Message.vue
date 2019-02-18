@@ -18,11 +18,11 @@
  <ul>    <li><img src="http://photo7.baihe.com/2019/02/17/100_100/5E26F91E2EB6CDAF647F871E0A6EBCBC.jpg" ><div class="text"><div class="name">蜡块</div><p>58岁 辽宁大连</p></div> <div class="time"></div></a></li></ul>
 
  <ul>    <li><img src="http://photo3.baihe.com/2018/06/27/100_100/F4EB1F93600CC9E81B3A6935B9BC46F6.jpg" ><div class="text"><div class="name">阿拉蕾</div><p>55岁 辽宁大连</p></div> <div class="time"></div></a></li></ul>
- 
+
  <ul>    <li><img src="http://photo12.baihe.com/2018/06/17/100_100/678AD75340316B258D1ED7210ECFB7BC.jpg" ><div class="text"><div class="name">拉斯科</div><p>52岁 辽宁大连</p></div> <div class="time"></div></a></li></ul>
- 
+
   </div>
- 
+
 </template>
 
 <style scoped type="text/css"">
@@ -32,7 +32,7 @@
 }
 
     .msghead {
-    
+
     text-align: center;
     display: block;
     opacity: 1;
@@ -60,9 +60,9 @@ ul li{
     margin-top: 10px;
     position: relative;
         border-bottom: 1px solid #e9e9e9;
-   
+
 }
- img{ 
+ img{
     width: 45px;
  height: 45px;
      border-radius: 100%;
@@ -94,11 +94,11 @@ p{
 </style>
 
 <script type="text/javascript">
-  export default {
-          methods: {
-              zsxClick(){
-                location.href="http://i.baihe.com/#ctrl=pay&act=redline"
-              }
-          }
+export default {
+  methods: {
+    zsxClick () {
+      location.href = 'http://i.baihe.com/#ctrl=pay&act=redline'
+    }
   }
+}
 </script>

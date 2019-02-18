@@ -5,8 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    userData:{
-      isLogin:false
+    userData: {
+      isLogin: false
     },
     myInfo: {
       isShowBack: false
@@ -16,27 +16,27 @@ export default new Vuex.Store({
       isFooterBarShow: true
     },
     meetInfo: {
-      looplist:[]
+      looplist: []
     },
     publicData: {
-      weatherData:{}
+      weatherData: {}
     },
     searchInfo: {
-      looplist:[]
+      looplist: []
     }
   },
   mutations: {
-    setUserDataIsLogin(state, payload){
-      this.state.userData.isLogin = payload;
+    setUserDataIsLogin (state, payload) {
+      this.state.userData.isLogin = payload
     },
-    setPublicWeatherData(state, payload){
-      this.state.publicData.weatherData = payload;
+    setPublicWeatherData (state, payload) {
+      this.state.publicData.weatherData = payload
     },
-    setMeetInfoLoopList(state, payload){
-      this.state.meetInfo.looplist = payload;
+    setMeetInfoLoopList (state, payload) {
+      this.state.meetInfo.looplist = payload
     },
-    setSearchInfoLoopList(state, payload){
-      this.state.searchInfo.looplist = payload;
+    setSearchInfoLoopList (state, payload) {
+      this.state.searchInfo.looplist = payload
     },
     changeMyInfoHeadBarShowBack (state, payload) {
       this.state.myInfo.isShowBack = payload

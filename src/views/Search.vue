@@ -35,7 +35,7 @@ import axios from 'axios'
 import 'vant/lib/button/style'
 import 'vant/lib/index.css'
 import { Toast } from 'vant'
-Vue.use(Toast);
+Vue.use(Toast)
 export default {
   components: {
     headers
@@ -47,14 +47,14 @@ export default {
       hea: 160
     }
   },
-  mounted(){
-    if(this.$store.state.searchInfo.looplist.length!==0){
-      this.looplist = this.$store.state.searchInfo.looplist;
-    }else{
+  mounted () {
+    if (this.$store.state.searchInfo.looplist.length !== 0) {
+      this.looplist = this.$store.state.searchInfo.looplist
+    } else {
       axios({
         url: 'data/f/getmembership',
         params: {
-          cityid:'862102',
+          cityid: '862102',
           page: 1,
           limit: 10
         }
@@ -83,11 +83,11 @@ export default {
         this.looplist = res.data.data
       })
     },
-    handclick(){
-        Toast.success('打招呼成功！');
+    handclick () {
+      Toast.success('打招呼成功！')
     },
-    lick(){
-        Toast('已添加到喜欢列表，请到我的中查看！');
+    lick () {
+      Toast('已添加到喜欢列表，请到我的中查看！')
     }
   }
 }

@@ -54,7 +54,7 @@
             </li>
           </ul>
           <p class="seviceTit seviceTitGray bg" id="myAccountUl2" style="display: none;">———— 已购买的服务 ————</p>
-        
+
           <p class="textBottom" id="goToWeb">
             <a href="javascript:;">登录百合电脑版体验更多服务</a>
           </p>
@@ -200,7 +200,7 @@
 </style>
 
 <script type="text/javascript">
-  export default {
+export default {
 
-  }
+}
 </script>

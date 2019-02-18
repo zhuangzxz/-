@@ -181,7 +181,7 @@ export default {
       looplist: []
     }
   },
-  created(){
+  created () {
     this.$store.commit('changeMainPanelFooterBar', true)
   },
   mounted () {
@@ -195,9 +195,9 @@ export default {
     //   console.log(res.data)
     //   this.looplist = res.data.data
     // })
-    if(this.$store.state.meetInfo.looplist.length!==0){
-      this.looplist = this.$store.state.meetInfo.looplist;
-    }else{
+    if (this.$store.state.meetInfo.looplist.length !== 0) {
+      this.looplist = this.$store.state.meetInfo.looplist
+    } else {
       axios({
         url: 'data/f/getmembership',
         params: {
@@ -205,7 +205,7 @@ export default {
           limit: 100
         }
       }).then(result => {
-        this.$store.commit('setMeetInfoLoopList', result.data.data);
+        this.$store.commit('setMeetInfoLoopList', result.data.data)
         this.looplist = result.data.data
       })
     }
@@ -214,14 +214,14 @@ export default {
   methods: {
     no () {
       this.looplist.pop()
-      this.$store.commit('setMeetInfoLoopList', this.looplist);
+      this.$store.commit('setMeetInfoLoopList', this.looplist)
     },
     yes () {
       this.looplist.pop()
-      this.$store.commit('setMeetInfoLoopList', this.looplist);
+      this.$store.commit('setMeetInfoLoopList', this.looplist)
     },
-    going(id){
-         this.$router.push(`/xqym/${id}`)
+    going (id) {
+      this.$router.push(`/xqym/${id}`)
     }
   }
 }

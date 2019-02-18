@@ -135,58 +135,58 @@
 </style>
 
 <script type="text/javascript">
-  import axios from 'axios'
-  export default {
-    data () {
-      return {
-        scale: 5,
-        isLoading: true,
-        intervalId: 0
-      }
-    },
-    mounted () {
-      var self = this
-      this.intervalId = setInterval(function () {
-        if (self.scale > 95) {
-          clearInterval(self.intervalId)
-          self.isLoading = false
-          return
-        }
-        self.scale += 1
-      }, 20)
-
-      axios({
-        url: 'data/f/getmembership',
-        params: {
-          page: Math.floor(Math.random() * 100),
-          limit: 100
-        }
-      }).then(result => {
-        this.$store.commit('setMeetInfoLoopList', result.data.data)
-      })
-
-      axios.get('data/weather').then(result => {
-        console.log('weatherData',result.data.data)
-        this.$store.commit('setPublicWeatherData', result.data.data)
-      }).catch(err=>{
-        console.log('天气接口异常')
-      })
-
-      axios({
-        url: 'data/f/getmembership',
-        params: {
-          cityid:'862102',
-          page: 1,
-          limit: 10
-        }
-      }).then(result => {
-        this.$store.commit('setSearchInfoLoopList', result.data.data)
-      }).catch(err => {})
-
-      this.$store.commit('changeMainPanelFooterBar', false)
-    },
-    destroyed () {
-      this.$store.commit('changeMainPanelFooterBar', true)
+import axios from 'axios'
+export default {
+  data () {
+    return {
+      scale: 5,
+      isLoading: true,
+      intervalId: 0
     }
+  },
+  mounted () {
+    var self = this
+    this.intervalId = setInterval(function () {
+      if (self.scale > 95) {
+        clearInterval(self.intervalId)
+        self.isLoading = false
+        return
+      }
+      self.scale += 1
+    }, 20)
+
+    axios({
+      url: 'data/f/getmembership',
+      params: {
+        page: Math.floor(Math.random() * 100),
+        limit: 100
+      }
+    }).then(result => {
+      this.$store.commit('setMeetInfoLoopList', result.data.data)
+    })
+
+    axios.get('data/weather').then(result => {
+      console.log('weatherData', result.data.data)
+      this.$store.commit('setPublicWeatherData', result.data.data)
+    }).catch(err => {
+      console.log('天气接口异常')
+    })
+
+    axios({
+      url: 'data/f/getmembership',
+      params: {
+        cityid: '862102',
+        page: 1,
+        limit: 10
+      }
+    }).then(result => {
+      this.$store.commit('setSearchInfoLoopList', result.data.data)
+    }).catch(err => {})
+
+    this.$store.commit('changeMainPanelFooterBar', false)
+  },
+  destroyed () {
+    this.$store.commit('changeMainPanelFooterBar', true)
   }
+}
 </script>

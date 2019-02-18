@@ -40,10 +40,10 @@
                   </em>
                   <em class="icon">
                     <a id="clearPwd" class="del"></a><a id="showPwd" class="eye"></a>
-                  </em> 
+                  </em>
                 </li>
               </ul>
-              
+
               <!-- 验证码 -->
               <div id="vRegVerifyCodeView" class="codeBox" style="display: none;">
                 <img id="vRegVerifyCode" class="js_cord" src="//static5.baihe.com/images/newH5/codeImg.png" width="80" height="40" alt="验证码">
@@ -53,13 +53,13 @@
               <p class="conText">
                 注册即表示同意百合网
                 <a href="javascript:;" id="vRegShowPro" class="aTxt">注册服务条款</a>
-              </p> 
+              </p>
               <div class="bhjyInfoArea">
                 <p>百合佳缘网络集团股份有限公司 </p>
                 <p>010-50863711 京ICP备10009806号-1</p>
               </div>
             </div>
-              
+
             <!-- 登录页面 -->
             <div id="con_log" v-if="!isSelect">
               <ul class="loginListN">
@@ -119,47 +119,47 @@
 </template>
 
 <script type="text/javascript">
-  import axios from 'axios'
-  import { Picker, Popup, Toast } from 'vant'
-  export default{
-    data(){
-      return {
-        isRegister:true,
-        isSelect:true,
-        isLoginDataOk:true,
-        isRegisterDataOk:false
-      }
+import axios from 'axios'
+import { Picker, Popup, Toast } from 'vant'
+export default {
+  data () {
+    return {
+      isRegister: true,
+      isSelect: true,
+      isLoginDataOk: true,
+      isRegisterDataOk: false
+    }
+  },
+  mounted () {
+    this.$store.commit('changeMainPanelFooterBar', false)
+    this.$store.commit('changeMyInfoHeadBarShowBack', false)
+  },
+  methods: {
+    onResisterButton: function () {
+      axios({
+        url: '/data/user/register',
+        method: 'post',
+        data: {
+          tel: '15998511234',
+          password: 'test'
+        }
+      }).then(result => {
+        console.log(result.data)
+        Toast(`${result.data.msg}`)
+      }).catch(err => {
+        console.log(err)
+      })
     },
-    mounted () {
-      this.$store.commit('changeMainPanelFooterBar', false)
-      this.$store.commit('changeMyInfoHeadBarShowBack', false)
+    onHandelLogin () {
+      console.log('收到登录点击事件')
+      this.$store.commit('setUserDataIsLogin', true)
+      this.$router.push('/meet')
     },
-    methods:{
-      onResisterButton:function(){
-        axios({
-          url:'/data/user/register',
-          method:'post',
-          data:{
-            tel:'15998511234',
-            password:"test"
-          }
-        }).then(result=>{
-          console.log(result.data)
-          Toast(`${result.data.msg}`)
-        }).catch(err=>{
-          console.log(err)
-        })
-      },
-      onHandelLogin(){
-        console.log('收到登录点击事件')
-        this.$store.commit('setUserDataIsLogin', true)
-        this.$router.push('/meet')
-      },
-      onHandelRegister(){
-        console.log('收到注册点击事件')
-      }
+    onHandelRegister () {
+      console.log('收到注册点击事件')
     }
   }
+}
 </script>
 
 <style scoped type="text/css">
@@ -449,8 +449,6 @@
     margin: 0em;
     font: 400 13.3333px Arial;
   }
-
-
 
   .loginNewH5 .loginListN {
     margin: 0 30px;
