@@ -2,8 +2,8 @@ module.exports = {
   devServer: {
     proxy: {
       '/data': {
-        target: 'http://localhost:8061/',
-        host:'http://localhost',
+        target: 'http://39.105.126.232:8060/',
+        host: 'http://39.105.126.232',
         changeOrigin: true
         // pathRewrite: {
         //     '^/v4/api': '/v4/api'
