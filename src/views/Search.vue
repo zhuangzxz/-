@@ -2,8 +2,8 @@
   <div class="search">
     <headers @event="myevent($event)"></headers>
     <ul>
-        <li v-for='data in looplist' @click="locClick(data.userID)">
-            <div class="top">
+        <li v-for='data in looplist'>
+            <div class="top" @click="locClick(data.userID)">
                 <dl>
                     <dt>
                         <img  :src="data.headPhotoUrl_120_150"></dt>
@@ -18,9 +18,10 @@
                 </dl>
             </div>
             <div class="bottom">
-                <span>聊天</span>
-                <span>打招呼</span>
-                <span>喜欢</span>
+                <router-link to="/message" tag="span">聊天</router-link>
+               <!--  <span>聊天</span> -->
+                <span @click="handclick()">打招呼</span>
+                <span @click="lick()">喜欢</span>
             </div>
         </li>
     </ul>
@@ -31,6 +32,10 @@
 import headers from './searchs/SearchsHeader'
 import Vue from 'vue'
 import axios from 'axios'
+import 'vant/lib/button/style'
+import 'vant/lib/index.css'
+import { Toast } from 'vant'
+Vue.use(Toast);
 export default {
   components: {
     headers
@@ -73,6 +78,12 @@ export default {
       }).then(res => {
         this.looplist = res.data.data
       })
+    },
+    handclick(){
+        Toast.success('打招呼成功！');
+    },
+    lick(){
+        Toast('已添加到喜欢列表，请到我的中查看！');
     }
   }
 }
