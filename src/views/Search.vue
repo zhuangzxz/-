@@ -1,7 +1,7 @@
 <template>
   <div class="search">
-    <headers @event="myevent($event)"></headers>
-    <ul>
+    <headers @event="myevent($event)" ></headers>
+    <ul  v-show="!isLoading" >
         <li v-for='data in looplist'>
             <div class="top" @click="locClick(data.userID)">
                 <dl>
@@ -25,6 +25,7 @@
             </div>
         </li>
     </ul>
+    <van-loading type="circular" class="loading" v-if="isLoading" size="50px" />
   </div>
 </template>
 
@@ -34,7 +35,9 @@ import Vue from 'vue'
 import axios from 'axios'
 import 'vant/lib/button/style'
 import 'vant/lib/index.css'
-import { Toast } from 'vant'
+import { Toast,Loading } from 'vant'
+
+Vue.use(Loading);
 Vue.use(Toast)
 export default {
   components: {
@@ -44,13 +47,15 @@ export default {
     return {
       looplist: [],
       age: 23,
-      hea: 160
+      hea: 160,
+      isLoading: false
     }
   },
   mounted () {
     if (this.$store.state.searchInfo.looplist.length !== 0) {
       this.looplist = this.$store.state.searchInfo.looplist
     } else {
+      this.isLoading = true;
       axios({
         url: 'data/f/getmembership',
         params: {
@@ -59,8 +64,16 @@ export default {
           limit: 10
         }
       }).then(result => {
+        this.isLoading = false;
         this.$store.commit('setSearchInfoLoopList', result.data.data)
-      }).catch(err => {})
+        this.looplist = result.data.data;
+        if(this.looplist.length===0){
+          Toast(`你要求太高了，没找到符合条件会员`)
+        }
+      }).catch(err => {
+        Toast(`服务器好像顶不住了`)
+        this.isLoading = false;
+      })
     }
   },
   methods: {
@@ -69,18 +82,26 @@ export default {
     },
     myevent (ev) {
       console.log(ev)
-      this.age = ev.age
-      this.hea = ev.stature
+      var optiopnObj = {}
+      if(ev.age !== '不限')
+        optiopnObj.age = ev.age
+      if(ev.hea !== '不限')
+        optiopnObj.hea = ev.age
+      optiopnObj.limit = 50;
+      this.isLoading = true;
       axios({
         url: 'data/f/getmembership',
-        params: {
-          limit: 200,
-          age: this.age,
-          height: this.hea
-        }
-
+        params: optiopnObj
       }).then(res => {
+        this.isLoading = false;
+        this.$store.commit('setSearchInfoLoopList', res.data.data)
         this.looplist = res.data.data
+        if(this.looplist.length===0){
+          Toast(`你要求太高了，没找到符合条件会员`)
+        }
+      }).catch(err => {
+        Toast(`服务器好像顶不住了`)
+        this.isLoading = false;
       })
     },
     handclick () {
@@ -184,5 +205,14 @@ export default {
                 }
             }
         }
+    }
+    .loading{
+        position:absolute;
+
+        left:50%;
+        top:50%;
+        transform: translate(-50%,-50%);
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius:5px;
     }
 </style>
