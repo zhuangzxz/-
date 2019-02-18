@@ -5,6 +5,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    userData:{
+      isLogin:false
+    },
     myInfo: {
       isShowBack: false
       // backToHref:"#/myinfo"
@@ -20,6 +23,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    setUserDataIsLogin(state, payload){
+      this.state.userData.isLogin = payload;
+    },
     setPublicWeatherData(state, payload){
       this.state.publicData.weatherData = payload;
     },

@@ -3,31 +3,37 @@
     <h2>邂逅</h2>
     <div class="modeCont"></div>
     <div id="app">
-    <div class="xhLove">
-        <div class="lick" @click="no()" ></div>
-        <div class="lick" @click="yes()"></div>
+        <div data-v-48d1340b="" class="contTop xh_contTop">
+            <div data-v-48d1340b="" id="xh_cover_top" class="cover_top">
+                <span data-v-48d1340b="" class="logo"></span>
+                <div data-v-48d1340b="" class="detail">
+                    <h3 data-v-48d1340b="">百合APP</h3>
+                    <span data-v-48d1340b="">视频直播 在线相亲</span>
+                </div>
+                <a data-v-48d1340b="" href="https://itunes.apple.com/us/app/bai-he-wang-zui-kao-pu-dan/id500975133?l=zh&amp;ls=1&amp;mt=8" id="openBtn" target="_blank" class="openBtn">打开</a>
+            </div>
+        </div>
+        <div class="xhLove">
+            <div class="lick" @click="no()" ></div>
+            <div class="lick" @click="yes()"></div>
+        </div>
 
+        <div class="xhphotoBox"  v-for='data in looplist' @click="going(data.userID)">
+            <router-link to="/meet/information" tag="a" class="goToProfileA">
+                <img :src="data.headPhotoUrl_120_150" style=" width: 245px; height: 245px; ">
+            </router-link>
+            <p>
+               <router-link to="/meet/information" tag="a" class="goToProfileA">{{data.nickname}}</router-link>
+                <img src="//static5.baihe.com/images/newH5/userIcon2.png" width="17" height="17">
+            </p>
+            <router-link to="/meet/information" tag="a" class="goToProfileA">
+                <span>{{data.age}}岁</span>
+                <span>{{data.height}}cm</span>
+                <span>{{data.educationChn}}</span>
+                <span>{{data.incomeChn}}</span>
+            </router-link>
+        </div>
     </div>
-
-    <div class="xhphotoBox"  v-for='data in looplist' @click="going(data.userID)">
-        <router-link to="/meet/information" tag="a" class="goToProfileA">
-            <img :src="data.headPhotoUrl_120_150" style=" width: 245px;
-    height: 245px; ">
-    </router-link>
-
-        <p>
-           <router-link to="/meet/information" tag="a" class="goToProfileA">{{data.nickname}}</router-link>
-            <img src="//static5.baihe.com/images/newH5/userIcon2.png" width="17" height="17">
-        </p>
-        <router-link to="/meet/information" tag="a" class="goToProfileA">
-            <span>{{data.age}}岁</span>
-            <span>{{data.height}}cm</span>
-            <span>{{data.educationChn}}</span>
-            <span>{{data.incomeChn}}</span>
-        </router-link>
-    </div>
-
-</div>
 
     <router-view></router-view>
   </div>
@@ -36,7 +42,9 @@
 <style scoped type="text/css">
 *{ padding: 0; margin: 0; }
 a{ text-decoration: none; }
-
+    h2{
+      margin-bottom: 50px;
+    }
     .meet{
         width: 100%;
         height: 100%;
@@ -80,7 +88,7 @@ a{ text-decoration: none; }
     }
     .xhphotoBox {
         position: absolute;
-        top: 49px;
+        top: 100px;
         left: 50%;
         width: 268px;
         height: 327px;
@@ -117,6 +125,51 @@ a{ text-decoration: none; }
         width: 225px;
         height: 225px;
     }
+    .contTop[data-v-48d1340b] {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 99;
+    }
+    .cover_top[data-v-48d1340b] {
+      height: 44px;
+      padding: 0;
+      background: #fff;
+      overflow: hidden;
+    }
+    .cover_top .logo[data-v-48d1340b] {
+      float: left;
+      display: block;
+      width: 76px;
+      height: 44px;
+      margin: 0;
+      background: url(http://static5.baihe.com/images/newH5/con_top_logo.png) no-repeat;
+      background-size: 100% auto;
+    }
+    .cover_top .detail[data-v-48d1340b] {
+      float: left;
+      width: 160px;
+      margin-top: 4px;
+    }
+    .cover_top .detail span[data-v-48d1340b] {
+      display: block;
+      font: 12px/12px "Microsoft YaHei";
+      color: #af947c;
+    }
+    .cover_top .openBtn[data-v-48d1340b] {
+      float: right;
+      display: block;
+      width: 60px;
+      height: 26px;
+      margin: 9px 16px 0 0;
+      font: 14px/26px "Microsoft YaHei";
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      background-image: linear-gradient(126deg, rgba(254,176,39,.97), #ff8445);
+      border-radius: 4px;
+    }
 </style>
 
 <script>
@@ -128,25 +181,45 @@ export default {
       looplist: []
     }
   },
+  created(){
+    this.$store.commit('changeMainPanelFooterBar', true)
+  },
   mounted () {
-    axios({
-      url: 'data/f/getmembership',
-      params: {
-        page: Math.floor(Math.random() * 100),
-        limit: 100
-      }
-    }).then(res => {
-      console.log(res.data)
-      this.looplist = res.data.data
-    })
+    // axios({
+    //   url: 'data/f/getmembership',
+    //   params: {
+    //     page: Math.floor(Math.random() * 100),
+    //     limit: 100
+    //   }
+    // }).then(res => {
+    //   console.log(res.data)
+    //   this.looplist = res.data.data
+    // })
+    if(this.$store.state.meetInfo.looplist.length!==0){
+      this.looplist = this.$store.state.meetInfo.looplist;
+      console.log('加载缓存会员数据')
+    }else{
+      axios({
+        url: 'data/f/getmembership',
+        params: {
+          page: Math.floor(Math.random() * 100),
+          limit: 100
+        }
+      }).then(result => {
+        this.$store.commit('setMeetInfoLoopList', result.data.data);
+        this.looplist = result.data.data
+      })
+    }
   },
 
   methods: {
     no () {
       this.looplist.pop()
+      this.$store.commit('setMeetInfoLoopList', this.looplist);
     },
     yes () {
       this.looplist.pop()
+      this.$store.commit('setMeetInfoLoopList', this.looplist);
     },
     going(id){
          this.$router.push(`/xqym/${id}`)

@@ -11,8 +11,9 @@ import MyInfoView from './views/MyInfo.vue'
 import xqym from './views/xqym.vue'
 import MainPannel from './views/myinfo/mainpanel.vue'
 import profileSetPannel from './views/myinfo/profileset'
-import guildPannel from './views/user/guide'
 import basicinfoPanel from './views/myinfo/basicinfo.vue'
+import guildPannel from './views/user/guide'
+import loginAndRegisterPannel from './views/user/loginandregister'
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: guildPannel
+    },
+    {
+      path: '/userloginandregister',
+      name: 'loginandregister',
+      component: loginAndRegisterPannel
     },
     {
       path: '/meet',

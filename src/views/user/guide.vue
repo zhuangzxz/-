@@ -15,7 +15,7 @@
           <div class="bottom">
             <div class="login">
               <a href="https://itunes.apple.com/us/app/bai-he-wang-zui-kao-pu-dan/id500975133?l=zh&amp;ls=1&amp;mt=8" class="orgBtn" id="openBtn" target="_blank">立即下载</a>
-              <a href="#/meet" class="whiteBtn" id="go_index">继续访问</a>
+              <a :href="$store.state.userData.isLogin?'#/meet':'#/userloginandregister'" class="whiteBtn" id="go_index">继续访问</a>
             </div>
             <img src="http://static5.baihe.com/images/newH5/dj_footer.jpg" width="100%">
         </div>
@@ -162,7 +162,6 @@
         }
       }).then(result => {
         this.$store.commit('setMeetInfoLoopList', result.data.data)
-        this.looplist = result.data.data
       })
 
       axios.get('/data/weather').then(result => {
