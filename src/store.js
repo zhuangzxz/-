@@ -6,14 +6,20 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
   	myInfo: {
-  		isShowBack:true,
-  		backToHref:"#myinfo"
-  	}
+  		isShowBack: false
+  		// backToHref:"#/myinfo"
+  	},
+    mainPanel: {
+      isFooterBarShow: true
+    }
   },
   mutations: {
-    changeMyInfo(state,href){
-      this.myInfo.isShowBack = state;
-      this.myInfo.backToHref = href;
+    changeMyInfoHeadBarShowBack (state, payload) {
+      this.state.myInfo.isShowBack = payload
+      // this.state.myInfo.backToHref = href;
+    },
+    changeMainPanelFooterBar (state, payload) {
+      this.state.mainPanel.isFooterBarShow = payload
     }
   },
   actions: {

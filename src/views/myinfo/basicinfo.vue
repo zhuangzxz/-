@@ -18,7 +18,7 @@
               <input type="text" id="vBasicInfoProvince_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="" @click='isPopupShow.basicInfoLocation=true' v-model="myinfo.cityChn">
               <van-popup v-model="isPopupShow.basicInfoLocation" position="bottom" :overlay="true">
                 <van-picker :columns="citysList" @change="onChange" show-toolbar @cancel="onCancel" @confirm="onConfirmLocation" />
-              </van-popup> 
+              </van-popup>
             </span>
           </li>
           <li>学历
@@ -47,7 +47,7 @@
           <li>购车情况<input type="text" id="vBasicInfoCar_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="" @click='isPopupShow.basicInfoCar=true' v-model="myinfo.car">
             <van-popup v-model="isPopupShow.basicInfoCar" position="bottom" :overlay="true">
               <van-picker :columns="carList" @change="onChange" show-toolbar @cancel="onCancel" @confirm="onConfirmCar" />
-            </van-popup> 
+            </van-popup>
           </li>
           <li>职业职务
             <input type="text" id="vBasicInfoOccupation_dummy" class="mbsc-control mbsc-control-ev " readonly="" placeholder="" @click='isPopupShow.basicInfoOccupation=true' v-model="myinfo.occupation">
@@ -63,7 +63,7 @@
 </template>
 
 <style scoped type="text/css">
-.profileset{
+  .profileset{
     text-align: left!important;
   }
   .whiteList {
@@ -117,7 +117,7 @@
     text-align: left!important;
   }
   .myData{
-      padding-bottom:50px; 
+      padding-bottom:50px;
   }
   .myData .inforList li:nth-child(1):before, .myData .inforList li:nth-child(3):before, .myData .inforList li:nth-child(4):before {
     background: none;
@@ -220,104 +220,108 @@
 </style>
 
 <script type="text/javascript">
-import { Picker,Popup,Toast } from 'vant';
-  import Vue from 'vue'
-  import citys from '../../../public/vender/data/citylist'
-  Vue.use(Popup);
-  Vue.use(Picker);
-  export default{
-    methods:{
-      onConfirmHeight(value, index) {
-        //Toast(`当前值：${value}, 当前索引：${index}`);
-        this.isPopupShow.basicInfoHeight = false;
-        this.myinfo.height = value;
-      },
-      onConfirmLocation(value, index) {
-        //Toast(`当前值：${value}, 当前索引：${index}`);
-        this.isPopupShow.basicInfoLocation = false;
-        this.myinfo.cityChn = value;
-      },
-      onConfirmEducation(value, index) {
-        //Toast(`当前值：${value}, 当前索引：${index}`);
-        this.isPopupShow.basicInfoEducation = false;
-        this.myinfo.educationChn = value;
-      },
-      onConfirmMarriage(value, index) {
-        //Toast(`当前值：${value}, 当前索引：${index}`);
-        this.isPopupShow.basicInfoMarriage = false;
-        this.myinfo.marriage = value;
-      },
-      onConfirmChildren(value, index) {
-        //Toast(`当前值：${value}, 当前索引：${index}`);
-        this.isPopupShow.basicInfoChildren = false;
-        this.myinfo.children = value;
-      },
-      onConfirmHousing(value, index) {
-        //Toast(`当前值：${value}, 当前索引：${index}`);
-        this.isPopupShow.basicInfoHousing = false;
-        this.myinfo.housing = value;
-      },
-      onConfirmCar(value, index) {
-        //Toast(`当前值：${value}, 当前索引：${index}`);
-        this.isPopupShow.basicInfoCar = false;
-        this.myinfo.car = value;
-      },
-      onConfirmOccupation(value, index) {
-        //Toast(`当前值：${value}, 当前索引：${index}`);
-        this.isPopupShow.basicInfoOccupation = false;
-        this.myinfo.occupation = value;
-      },
-      onCancel() {
-        Toast('取消');
-      },
-      onChange(picker, values) {
-        picker.setColumnValues(1, citys[values[0]]);
-      }
+import { Picker, Popup, Toast } from 'vant'
+import Vue from 'vue'
+import citys from '../../../public/vender/data/citylist'
+Vue.use(Popup)
+Vue.use(Picker)
+export default {
+  methods: {
+    onConfirmHeight (value, index) {
+      // Toast(`当前值：${value}, 当前索引：${index}`);
+      this.isPopupShow.basicInfoHeight = false
+      this.myinfo.height = value
     },
-    data(){
-      return{
-        isPopupShow:{
-          basicInfoHeight : false,
-          basicInfoLocation : false,
-          basicInfoEducation : false,
-          basicInfoMarriage: false,
-          basicInfoChildren: false,
-          basicInfoHousing: false,
-          basicInfoCar: false,
-          basicInfoOccupation: false
-        },
-        myinfo:{
-          height:170,
-          cityChn:'',
-          provinceId:8611,
-          cityId:1,
-          educationChn:'',
-          education:'',
-          marriage:'',
-          children: '',
-          housing: '',
-          car:'',
-          occupation:''
-        },
-        heightList: ['165', '166', '167', '168', '169','170', '171', '172', '173', '174','175'],
-        citysList:[
-          {
-            values: Object.keys(citys),
-            className: 'column1'
-          },
-          {
-            values: citys['北京'],
-            className: 'column2',
-            defaultIndex: 0
-          }
-        ],
-        educationList:['初中','中专/职高/技校','高中','大专','本科','硕士','博士'],
-        marriageList:['未婚','离异','丧偶','已婚'],
-        childrenList: ['没有','有，和我住一起','有，有时和我住一起','有，不和我住一起'],
-        housingList: ['以后再告诉你','与父母同住','租房','已购房(有贷款)','已购房(无贷款)','住单位房','住亲朋家','需要时购置'],
-        carList: ['未购车','已购车','单位用车','需要时购置'],
-        occupationList:['计算机/互联网','电子电器/通信技术','机械/仪器仪表','销售','客服及技术支持','财务/审计/税务','证券/金融/投资/银行','保险','生产/营运','质量/安全管理','工程/能源','贸易/采购','物流/仓储/运输','技工','化工/环保','生物/制药/医疗器械','医院/医疗/护理','广告','市场/公关','影视/媒体','写作/出版/印刷','翻译','艺术/设计/创意','建筑/房地产/装饰装修','物业管理','人力资源','高级经营管理','行政/后勤','咨询/顾问','律师/法务/合规','教育/培训','科研','酒店/旅游/餐饮/娱乐 ','美容/健身','商业零售服务','交通运输服务','保安/家政服务','警察/其它','公务员','运动员','农/林/牧/渔','自由职业/兼职','储备干部/培训生/实习生','在校学生','退休','其它'],
-      }
+    onConfirmLocation (value, index) {
+      // Toast(`当前值：${value}, 当前索引：${index}`);
+      this.isPopupShow.basicInfoLocation = false
+      this.myinfo.cityChn = value
+    },
+    onConfirmEducation (value, index) {
+      // Toast(`当前值：${value}, 当前索引：${index}`);
+      this.isPopupShow.basicInfoEducation = false
+      this.myinfo.educationChn = value
+    },
+    onConfirmMarriage (value, index) {
+      // Toast(`当前值：${value}, 当前索引：${index}`);
+      this.isPopupShow.basicInfoMarriage = false
+      this.myinfo.marriage = value
+    },
+    onConfirmChildren (value, index) {
+      // Toast(`当前值：${value}, 当前索引：${index}`);
+      this.isPopupShow.basicInfoChildren = false
+      this.myinfo.children = value
+    },
+    onConfirmHousing (value, index) {
+      // Toast(`当前值：${value}, 当前索引：${index}`);
+      this.isPopupShow.basicInfoHousing = false
+      this.myinfo.housing = value
+    },
+    onConfirmCar (value, index) {
+      // Toast(`当前值：${value}, 当前索引：${index}`);
+      this.isPopupShow.basicInfoCar = false
+      this.myinfo.car = value
+    },
+    onConfirmOccupation (value, index) {
+      // Toast(`当前值：${value}, 当前索引：${index}`);
+      this.isPopupShow.basicInfoOccupation = false
+      this.myinfo.occupation = value
+    },
+    onCancel () {
+      Toast('取消')
+    },
+    onChange (picker, values) {
+      picker.setColumnValues(1, citys[values[0]])
     }
+  },
+  data () {
+    return {
+      isPopupShow: {
+        basicInfoHeight: false,
+        basicInfoLocation: false,
+        basicInfoEducation: false,
+        basicInfoMarriage: false,
+        basicInfoChildren: false,
+        basicInfoHousing: false,
+        basicInfoCar: false,
+        basicInfoOccupation: false
+      },
+      myinfo: {
+        height: 170,
+        cityChn: '',
+        provinceId: 8611,
+        cityId: 1,
+        educationChn: '',
+        education: '',
+        marriage: '',
+        children: '',
+        housing: '',
+        car: '',
+        occupation: ''
+      },
+      heightList: ['165', '166', '167', '168', '169', '170', '171', '172', '173', '174', '175'],
+      citysList: [
+        {
+          values: Object.keys(citys),
+          className: 'column1'
+        },
+        {
+          values: citys['北京'],
+          className: 'column2',
+          defaultIndex: 0
+        }
+      ],
+      educationList: ['初中', '中专/职高/技校', '高中', '大专', '本科', '硕士', '博士'],
+      marriageList: ['未婚', '离异', '丧偶', '已婚'],
+      childrenList: ['没有', '有，和我住一起', '有，有时和我住一起', '有，不和我住一起'],
+      housingList: ['以后再告诉你', '与父母同住', '租房', '已购房(有贷款)', '已购房(无贷款)', '住单位房', '住亲朋家', '需要时购置'],
+      carList: ['未购车', '已购车', '单位用车', '需要时购置'],
+      occupationList: ['计算机/互联网', '电子电器/通信技术', '机械/仪器仪表', '销售', '客服及技术支持', '财务/审计/税务', '证券/金融/投资/银行', '保险', '生产/营运', '质量/安全管理', '工程/能源', '贸易/采购', '物流/仓储/运输', '技工', '化工/环保', '生物/制药/医疗器械', '医院/医疗/护理', '广告', '市场/公关', '影视/媒体', '写作/出版/印刷', '翻译', '艺术/设计/创意', '建筑/房地产/装饰装修', '物业管理', '人力资源', '高级经营管理', '行政/后勤', '咨询/顾问', '律师/法务/合规', '教育/培训', '科研', '酒店/旅游/餐饮/娱乐 ', '美容/健身', '商业零售服务', '交通运输服务', '保安/家政服务', '警察/其它', '公务员', '运动员', '农/林/牧/渔', '自由职业/兼职', '储备干部/培训生/实习生', '在校学生', '退休', '其它']
+    }
+  },
+  created () {
+    this.$store.commit('changeMainPanelFooterBar', false)
+    this.$store.commit('changeMyInfoHeadBarShowBack', true)
   }
+}
 </script>
