@@ -154,6 +154,7 @@
         }
         self.scale += 1
       }, 20)
+
       axios({
         url: 'data/f/getmembership',
         params: {
@@ -164,10 +165,23 @@
         this.$store.commit('setMeetInfoLoopList', result.data.data)
       })
 
-      axios.get('/data/weather').then(result => {
+      axios.get('data/weather').then(result => {
         console.log('weatherData',result.data.data)
         this.$store.commit('setPublicWeatherData', result.data.data)
+      }).catch(err=>{
+        console.log('天气接口异常')
       })
+
+      axios({
+        url: 'data/f/getmembership',
+        params: {
+          cityid:'862102',
+          page: 1,
+          limit: 10
+        }
+      }).then(result => {
+        this.$store.commit('setSearchInfoLoopList', result.data.data)
+      }).catch(err => {})
 
       this.$store.commit('changeMainPanelFooterBar', false)
     },
