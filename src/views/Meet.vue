@@ -194,7 +194,7 @@ export default {
       this.looplist = this.$store.state.meetInfo.looplist
     } else {
       axios({
-        url: 'data/f/getmembership',
+        url: '/yuenimei/data/getmembership/f',
         params: {
           page: Math.floor(Math.random() * 100),
           limit: 100

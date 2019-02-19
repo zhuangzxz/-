@@ -57,7 +57,7 @@ export default {
     } else {
       this.isLoading = true;
       axios({
-        url: 'data/f/getmembership',
+        url: '/yuenimei/data/getmembership/f',
         params: {
           cityid: '862102',
           page: 1,
@@ -86,11 +86,11 @@ export default {
       if(ev.age !== '不限')
         optiopnObj.age = ev.age
       if(ev.hea !== '不限')
-        optiopnObj.hea = ev.age
+        optiopnObj.height = ev.age
       optiopnObj.limit = 50;
       this.isLoading = true;
       axios({
-        url: 'data/f/getmembership',
+        url: '/yuenimei/data/getmembership/f',
         params: optiopnObj
       }).then(res => {
         this.isLoading = false;

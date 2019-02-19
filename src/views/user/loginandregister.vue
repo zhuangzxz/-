@@ -36,7 +36,7 @@
                 </li>
                 <li class="pwd">
                   <em id="pwdHtml">
-                    <input name="vRegTxtPwd" id="vRegTxtPwd" type="password" placeholder="请输入6-16位字母/数字密码" maxlength="16" v-model="regPassword">
+                    <input name="vRegTxtPwd" id="vRegTxtPwd" type="password" placeholder="请输入6-16位字母/数字密码" maxlength="16" v-model="regPassword" autocomplete="new-password">
                   </em>
                   <em class="icon">
                     <a id="clearPwd" class="del"></a><a id="showPwd" class="eye"></a>
@@ -69,7 +69,7 @@
                 </li>
                 <li class="pwd">
                   <span id="pwdHtml1">
-                    <input name="vLoginTxtPwd" id="vLoginTxtPwd" type="password" placeholder="请输入密码" maxlength="20" v-model="loginPassword">
+                    <input name="vLoginTxtPwd" id="vLoginTxtPwd" type="password" placeholder="请输入密码" maxlength="20" v-model="loginPassword" autocomplete="new-password">
                   </span>
                   <a id="clearPwd1" class="del"></a>
                 </li>
@@ -140,9 +140,12 @@ export default {
   },
   methods: {
     onHandelLogin () {
-      console.log('收到登录点击事件')
+      console.log('收到登录点击dddd')
+      // this.$store.commit('setUserDataIsLogin', true)
+      // this.$router.push('/meet')
+      // Toast(`登录成功`)
       axios({
-        url: '/data/user/login',
+        url: '/yuenimei/data/user/login',
         method: 'post',
         data: {
           tel: this.loginTel,
@@ -161,7 +164,7 @@ export default {
     },
     onHandelRegister () {
       axios({
-        url: '/data/user/register',
+        url: '/yuenimei/data/user/register',
         method: 'post',
         data: {
           tel: this.regTel,

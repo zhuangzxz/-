@@ -19,7 +19,8 @@ export default new Vuex.Store({
       looplist: []
     },
     publicData: {
-      weatherData: {}
+      weatherData: {},
+      sysVer:'1.20'
     },
     searchInfo: {
       looplist: []

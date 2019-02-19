@@ -156,7 +156,7 @@ export default {
     }, 20)
 
     axios({
-      url: 'data/f/getmembership',
+      url: '/yuenimei/data/getmembership/f',
       params: {
         page: Math.floor(Math.random() * 100),
         limit: 100
@@ -165,15 +165,15 @@ export default {
       this.$store.commit('setMeetInfoLoopList', result.data.data)
     })
 
-    axios.get('data/weather').then(result => {
-      console.log('weatherData', result.data.data)
+    axios.get('/public-api/weather').then(result => {
+      //console.log('weatherData', result.data.data)
       this.$store.commit('setPublicWeatherData', result.data.data)
     }).catch(err => {
       console.log('天气接口异常')
     })
 
     axios({
-      url: 'data/f/getmembership',
+      url: '/yuenimei/data/getmembership/f',
       params: {
         cityid: '862102',
         page: 1,
@@ -184,6 +184,7 @@ export default {
     }).catch(err => {})
 
     this.$store.commit('changeMainPanelFooterBar', false)
+    console.log('系统版本：',this.$store.state.publicData.sysVer)
   },
   destroyed () {
     this.$store.commit('changeMainPanelFooterBar', true)
